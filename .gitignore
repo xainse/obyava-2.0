@@ -1,4 +1,4 @@
-/tmp 
-/Config/database.php
-/Config/core.php
-/webroot/*.log
+tmp 
+Config/database.php
+Config/core.php
+webroot/*.log
