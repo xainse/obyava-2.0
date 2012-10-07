@@ -69,7 +69,7 @@ class DATABASE_CONFIG {
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
-		public $obyava = array(
+/*		public $obyava = array(
 				'datasource' => 'Database/Mysql',
 				'persistent' => false,
 				'host' => 'localhost',
@@ -79,6 +79,7 @@ class DATABASE_CONFIG {
 				'prefix' => '',
 				//'encoding' => 'utf8',
 			);
+*/
 	public $test = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
