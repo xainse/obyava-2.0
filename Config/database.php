@@ -67,7 +67,7 @@ class DATABASE_CONFIG {
 		'password' => 'password',
 		'database' => 'database_name',
 		'prefix' => '',
-		//'encoding' => 'utf8',
+		'encoding' => 'utf8',
 	);
 /*		public $obyava = array(
 				'datasource' => 'Database/Mysql',
