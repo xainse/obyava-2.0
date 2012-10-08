@@ -59,7 +59,7 @@
  */
 class DATABASE_CONFIG {
 
-	public $default = array(
+	/* public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
@@ -68,8 +68,8 @@ class DATABASE_CONFIG {
 		'database' => 'database_name',
 		'prefix' => '',
 		//'encoding' => 'utf8',
-	);
-		public $obyava = array(
+	); */
+		public $default = array(
 				'datasource' => 'Database/Mysql',
 				'persistent' => false,
 				'host' => 'localhost',
@@ -77,7 +77,7 @@ class DATABASE_CONFIG {
 				'password' => '',
 				'database' => 'obyava_port',
 				'prefix' => '',
-				//'encoding' => 'utf8',
+				'encoding' => 'utf8',
 			);
 	public $test = array(
 		'datasource' => 'Database/Mysql',
