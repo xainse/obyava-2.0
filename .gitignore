@@ -1,3 +1,13 @@
-Config/
-tmp/
-*.log
+tmp
+Config/database.php
+Config/core.php
+webroot/*.log
+webroot/*.ipa
+webroot/googleAuthen.pem
+webroot/*.mobileprovision
+webroot/*.plist
+/nbproject
+*~
+islickdev.session
+islickdev.webprj tmp
+webroot/pass_log_registration.
