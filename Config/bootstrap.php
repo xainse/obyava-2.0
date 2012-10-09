@@ -179,3 +179,17 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+
+/**
+ * Debag functions
+ */
+function wln($var='Ok') {
+	echo '<pre>';
+	print_r($var);
+	echo '</pre>';
+}
+function we ($var='Ok') {
+	wln($var);
+	exit();
+}

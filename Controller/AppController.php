@@ -20,7 +20,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-App::uses('Controller', 'Controller');
+App::uses('Security', 'Utility');
 
 /**
  * Application Controller
@@ -32,4 +32,37 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	
+	public $helpers			= array ('Html', 'Form', 'Session','Js');
+
+	private $isCron			= false;
+	
+	private $user_level		= 'user';
+	
+	private $allov_pages	= array('login', 'logout', 'registration', 'registration_confirm','thankyou','resend', 'edit',);
+	
+	private $users_controllers	= array('nabors', 'admins', 'links', 'checkers');
+	
+	public static $cronLogType = 'cron';
+	
+	function beforeFilter() {
+		parent::befoneFilter();
+		if (!$this->Session->check('Admin') && !in_array($this->action, $this->allow_pagers)){//||&this->Session->read("Admin.permission_level") !=$this->admin_level) {
+			$this->Session->write('back_url', $this->here);
+			$this->redirect(array('controller'=>'admins','action'=>'login'));
+		}
+		//check users and admin controllers
+		if ($this->Session->read("Admin.permission_level")!=$this->admin_level &&
+			$this->Session->read("Admin.permission_level")==$this->user_level&&
+			!in_array($this->params['controller'], $this->users_controllers)) {
+				$this->redirect('/');
+		}
+	}
+		
+		
+		
+		
+		
+		
 }
+	
