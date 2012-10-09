@@ -119,7 +119,7 @@ class AdminsController extends AppController {
 			return bin2hex (mhash(MHASH_SHA256, $string));
 		}
 		if (function_exists('hash')){
-			retrun hash($type, $string);
+			return hash($type, $string);
 		}
 		return md5($string);
 	}
