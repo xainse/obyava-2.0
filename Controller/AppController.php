@@ -39,15 +39,15 @@ class AppController extends Controller {
 	
 	private $user_level		= 'user';
 	
-	private $allov_pages	= array('login', 'logout', 'registration', 'registration_confirm','thankyou','resend', 'edit',);
+	private $allow_pages	= array('login', 'logout', 'registration', 'registration_confirm','thankyou','resend', 'edit',);
 	
 	private $users_controllers	= array('nabors', 'admins', 'links', 'checkers');
 	
 	public static $cronLogType = 'cron';
 	
 	function beforeFilter() {
-		parent::befoneFilter();
-		if (!$this->Session->check('Admin') && !in_array($this->action, $this->allow_pagers)){//||&this->Session->read("Admin.permission_level") !=$this->admin_level) {
+		parent::beforeFilter();
+		if (!$this->Session->check('Admin') && !in_array($this->action, $this->allow_pages)){//||&this->Session->read("Admin.permission_level") !=$this->admin_level) {
 			$this->Session->write('back_url', $this->here);
 			$this->redirect(array('controller'=>'admins','action'=>'login'));
 		}
