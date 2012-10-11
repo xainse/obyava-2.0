@@ -5,7 +5,7 @@
 	echo $this->Html->css(array('login.css'));
 	echo $this->Html->script(array('jquery.1.8.2.min'));
 ?>
-<title>Закрытая зона (Login)</title>
+<title>Р—Р°РєСЂС‹С‚Р°СЏ Р·РѕРЅР° (Login)</title>
 </head>
 <body>
 <script type="text/javascript">
@@ -31,6 +31,7 @@ div#centered {margin-top: expression(((document.documentElement.offsetHeight/2)
 </style>
 <![endif]-->
 <div id="wrapper">
+<?php wln($Auth);?>
 <div id="centered">
 	<?php echo $this->Form->create('Admin', array('action'=>$this->action))?>
 	<?php echo $this->Form->input('login', array('label'=>'Login:', 'error'=>array('not_correct'=>'Error! Wrong login and/or password. Please try again.')))?>
@@ -38,6 +39,8 @@ div#centered {margin-top: expression(((document.documentElement.offsetHeight/2)
 	<?php echo $this->Form->end('Enter')?></div>
 
 </div>
+
+<?php echo $this->element('sql_dump')?>
 
 <script type="text/javascript">
 	document.forms[0].elements['AdminLogin'].focus();
