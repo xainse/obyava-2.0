@@ -11,7 +11,7 @@
 			'type'=>'password',
 			'class'=>'short text',
 			'error'=>array(
-				'notempty'		=> __('This field cannot be left blank',true'),
+				'notempty'		=> __('This field cannot be left blank',true),
 				'length'		=> __('Password cant be less than 5 characrets', true),
 				'alphaNumeric'	=> __('password need to be aplhanumeric', true),
 				'equal'			=> __('Password & configuration fields are not equal', true),
