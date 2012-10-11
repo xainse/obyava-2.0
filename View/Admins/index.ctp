@@ -1,5 +1,6 @@
 <div class="admins index">
 	<h2><?php __('Admins');?></h2>	
+	<h3> <a href="/admins/add">Add Admins</a></h3>	
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
