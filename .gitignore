@@ -8,6 +8,3 @@ webroot/*.mobileprovision
 webroot/*.plist
 /nbproject
 *~
-islickdev.session
-islickdev.webprj tmp
-webroot/pass_log_registration.
