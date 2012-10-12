@@ -8,8 +8,8 @@
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('bootstrap.min', 'obyava-style'));
-		echo $this->Html->script(array('jquery.1.8.2.min'));
+		echo $this->Html->css(array('bootstrap.min', 'admin-style'));
+		echo $this->Html->script(array('jquery.1.8.2.min', 'bootstrap.min'));
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -29,21 +29,13 @@
 
 </head>
 <body>
+	<?php echo $this->element('admin-top-nav');?>
 	<div id="container" class="page-wrap">
-	<?php //echo $this->element('top-nav')?>
-		<header class="header">
 			
-		</header>
-		<div id="content">
+		<?php echo $this->Session->flash(); ?>
 
-			<?php echo $this->Session->flash(); ?>
-
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			
-		</div>
+		<?php echo $this->fetch('content'); ?>
+		
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

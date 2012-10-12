@@ -1,0 +1,82 @@
+html,body{
+	heiding: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	display: table;
+	height: 100%;
+	text-align: right;
+	text-align: center;
+	font: .8em/ 1.3;
+	font-family: Candara,Arial, sans-serif;
+	color: #444;
+}
+
+#centered{
+	widht: 280px;
+	color: #333;
+	margin: 0 auto;
+}
+
+#centered h4{
+	text-align: left;
+}
+
+#wrapper {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+form{
+	width: 300px;
+	height: 146px;
+	background: url (../img/admin/login-form.png) no-repead 0 0;
+	float: left;
+	padding-top: 20px;	
+}
+
+label {
+	float: left;
+	widht: 80px;
+	color: #eee;
+}
+.input input {
+	float: left;
+	widht: 175px;
+}
+label, .input input {
+	margin: 7px 3px;
+}
+
+div.submit {
+	widht: 300px;
+	padding: 5px;
+	text-allign: center;
+}
+
+#AdminLoginForm .error-message{
+	position: absolute;
+	top: 2%;
+	left: 2%;
+	widht: 400px;
+	line-height: 50px;
+	blackground: #ffaeae;
+	/*border: 1px solid #f00; */
+	text-align: center;
+	opacity: 0.8;
+}
+.registration_ref {
+	display: none;
+	position: absolute;
+	widht: 150px;
+	top: 10px;
+	rigt: 10px;
+	line-height: 35px;
+	background-color: $42aaff;
+	border: 3px solid #1e90ff
+}
+.registration_ref a{
+	color: #fff;
+}

@@ -3,19 +3,38 @@
 App::uses('security', 'utility');
 
 class AdminsController extends AppController {
-	var $name='Admins';
-	var $components= array ('Email');
+	public $name='Admins';
+	
+	public $components= array ('Email');
+	
+	public $paginate = array(
+        'limit' => 1,
+        'order' => array(
+	 		'Admin.id' => 'asc',
+	        )
+	    );
+	
+	
+	public function beforeRender () {
+		parent::beforeRender();
+		
+		$this->layout = 'admin_layout';
+		
+	}
+	
 	public function index (){
-		$this->Admin->recursive=0;
-		$this->set('admin', $this->paginate());
+		$this->Admin->recursive = 0;
+		
+		$this->set('admins', $this->paginate());
 	}
 	public function view($id=null) {
-	if (!$id){
-		$this->Session->setFlash(__('Invalid nquiry', true));
-		$this->redirect(array('action'=>'index'));
+		if (!$id){
+			$this->Session->setFlash(__('Invalid nquiry', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		$this->set('admin',$this->Admin->read(null, $id));
 	}
-	$this->set('admin',$this->Admin->read(null, $id));
-}
+	
 	public function add() {
 		if (!empty($this->data)){
 			$this->Admin->create();
@@ -27,6 +46,8 @@ class AdminsController extends AppController {
 			$this->Session->setFlash(__('The record could not be saved. Please, try again.', true));
 			}
 		}
+		
+		$this->render('edit');
 	}
 	
 	public function edit($id=null){
@@ -60,8 +81,21 @@ class AdminsController extends AppController {
 	}
 	public function login () {
 		$this->layout = 'ajax';
-		if (!empty($this->data)){
-			$conditions =array("login='".$this->data['Admin']['login']."'","password='".$this->Admin->hash($this->data['Admin']['login'])."'");
+		
+		if ($this->Auth->login() /*&& $this->isAuthorized()*/){
+			we($_SESSION);
+			we($this->request);
+			$this->redirect($this->Auth->loginRedirect);	
+		} elseif ($this->Auth->login() && !$this->isAuthorized()) {			
+			$this->redirect(array('action'=>'noaccess'));
+		} elseif (!empty($this->request->data)) {
+			//$this->Session->setFlash($this->Auth->authError, 'alert', array( 'plugin' => 'TwitterBootstrap', 'class' => 'alert-error'));
+		}
+		
+		
+		
+	/*	if (!empty($this->data)){			
+			$conditions =array("login='".$this->data['Admin']['login']."'","password='".$this->hash($this->data['Admin']['login'])."'");
 			$someone = $this->Admin->find("first", array('conditions'=>$conditions));
 			//we ($someone);
 			if (!empty($someone)){
@@ -84,8 +118,8 @@ class AdminsController extends AppController {
 				//we ($this->hahs($this->data['Admin']['password']));
 				$this->Admin->invalidate('login', 'not_correct');
 			}
-		
 		}
+		*/
 	}
 	
 	public function logout () {
@@ -94,7 +128,7 @@ class AdminsController extends AppController {
 	}
 	
 	private function hash($string, $type = null, $salt = false) {
-		$_this =& Security::getInstanse();
+		$_this =&Security::getInstanse();
 		
 		if ($salt) {
 			if (is_string($salt)) {
