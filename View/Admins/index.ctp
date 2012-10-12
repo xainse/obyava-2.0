@@ -1,7 +1,11 @@
 <div class="admins index">
-	<h2><?php __('Admins');?></h2>	
-	<h3> <a href="/admins/add">Add Admins</a></h3>	
-	<table cellpadding="0" cellspacing="0">
+	<h2><?php echo __('Адміністратори сайту');?></h2>	
+	<div class="nav">
+	<a href="/admins/add" class="btn"><i class="icon-plus"></i><?php echo __('Новий Адміністратор')?></a>
+	</div>
+	
+	
+	<table cellpadding="0" cellspacing="0" class="table table-bordered">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('login');?></th>
@@ -9,7 +13,7 @@
 			<th><?php echo $this->Paginator->sort('last_name');?></th>
 			<th><?php echo $this->Paginator->sort('email');?></th>
 			<th><?php echo $this->Paginator->sort('description');?></th>
-			<th class="actions"><?php __('Actions');?></th>
+			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 	$i = 0;
@@ -27,18 +31,20 @@
 		<td><?php echo $admin['Admin']['email']; ?>&nbsp;</td>
 		<td><?php echo $admin['Admin']['description']; ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $admin['Admin']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $admin['Admin']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $admin['Admin']['id'])); ?> | 
+			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $admin['Admin']['id'])); ?> | 
 			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $admin['Admin']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $admin['Admin']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
 	</table>
 
-	<div class="paging">
-		<?php echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
-	  	<?php echo $this->Paginator->numbers();?>
-		<?php echo $this->Paginator->next(__('next', true).' >>', array(), null, array('class' => 'disabled'));?>
+	<div class="pagination">
+		<ul>
+		<li><?php echo $this->Paginator->prev('<< ', array(), null, array('class'=>'disabled', 'tag'=>'a'));?></li>
+	  	<?php echo $this->Paginator->numbers(array('tag'=>'li', 'separator' => false));?>
+		<li><?php echo $this->Paginator->next(' >>', array(), null, array('class' => 'disabled', 'tag'=>'a'));?></li>
+		</ul>
 	</div>
 </div>
 <div class="actions">

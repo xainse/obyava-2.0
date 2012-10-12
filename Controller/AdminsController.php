@@ -3,9 +3,24 @@
 App::uses('security', 'utility');
 
 class AdminsController extends AppController {
-	var $name='Admins';
+	public $name='Admins';
 	
-	var $components= array ('Email');
+	public $components= array ('Email');
+	
+	public $paginate = array(
+        'limit' => 1,
+        'order' => array(
+	 		'Admin.id' => 'asc',
+	        )
+	    );
+	
+	
+	public function beforeRender () {
+		parent::beforeRender();
+		
+		$this->layout = 'admin_layout';
+		
+	}
 	
 	public function index (){
 		$this->Admin->recursive = 0;
