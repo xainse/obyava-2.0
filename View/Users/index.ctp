@@ -25,11 +25,11 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
-		<td><?php echo $user['User']['_id'] ?>&nbsp;</td>
-		<td><?php echo $user['User']['_login']; ?>&nbsp;</td>
-		<td><?php echo $user['User']['first_name']; ?>&nbsp;</td>
-		<td><?php echo $user['User']['last_name']; ?>&nbsp;</td>
-		<td><?php echo $user['User']['_email']; ?>&nbsp;</td>
+		<td><?php echo $user['User']['id'] ?>&nbsp;</td>
+		// <td><?php echo $user['User']['_login']; ?>&nbsp;</td>
+		// <td><?php echo $user['User']['first_name']; ?>&nbsp;</td>
+		// <td><?php echo $user['User']['last_name']; ?>&nbsp;</td>
+		// <td><?php echo $user['User']['_email']; ?>&nbsp;</td>
 		<td><?php echo $user['User']['description']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $user['User']['_id'])); ?> | 
@@ -47,6 +47,7 @@
 		<li><?php echo $this->Paginator->next(' >>', array(), null, array('class' => 'disabled', 'tag'=>'a'));?></li>
 		</ul>
 	</div>
+	<?  we($user);?>
 </div>
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
