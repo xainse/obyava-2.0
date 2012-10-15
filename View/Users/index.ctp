@@ -8,8 +8,7 @@
 	<table cellpadding="0" cellspacing="0" class="table table-bordered">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('login');?></th>
-			<th><?php echo $this->Paginator->sort('user_hash');?></th>
+			<th><?php echo $this->Paginator->sort('login');?></th>			
 			<th><?php echo $this->Paginator->sort('user_ip');?></th>
 			<th><?php echo $this->Paginator->sort('user_email');?></th>
 			<th><?php echo $this->Paginator->sort('autorize');?></th>
@@ -23,18 +22,20 @@
 		if ($i++ % 2 == 0) {
 			$class = ' class="altrow"';
 		}
+		
+		//we($user);
 	?>
 	<tr<?php echo $class;?>>
-		<td><?php echo $user['User']['_id'] ?>&nbsp;</td>
-		<td><?php echo $user['User']['_login']; ?>&nbsp;</td>
-		<td><?php echo $user['User']['first_name']; ?>&nbsp;</td>
-		<td><?php echo $user['User']['last_name']; ?>&nbsp;</td>
-		<td><?php echo $user['User']['_email']; ?>&nbsp;</td>
-		<td><?php echo $user['User']['description']; ?>&nbsp;</td>
+		<td><?php echo $user['User']['user_id'] ?>&nbsp;</td>
+		<td><?php echo $user['User']['user_login']; ?>&nbsp;</td>		
+		<td><?php echo $user['User']['user_ip']; ?>&nbsp;</td>		
+		<td><?php echo $user['User']['user_email']; ?>&nbsp;</td>
+		<td><?php echo $user['User']['autorize']; ?>&nbsp;</td>
+		<td><?php echo $user['User']['status']; ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $user['User']['_id'])); ?> | 
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $user['User']['_id'])); ?> | 
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $user['User']['_id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['_id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $user['User']['user_id'])); ?> | 
+			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $user['User']['user_id'])); ?> | 
+			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $user['User']['user_id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['user_id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

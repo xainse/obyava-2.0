@@ -4,7 +4,6 @@
 	<a href="/admins/add" class="btn"><i class="icon-plus"></i><?php echo __('Новий Адміністратор')?></a>
 	</div>
 	
-	
 	<table cellpadding="0" cellspacing="0" class="table table-bordered">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
