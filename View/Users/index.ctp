@@ -4,7 +4,6 @@
 	<a href="/admins/add" class="btn"><i class="icon-plus"></i><?php echo __('новий користувач сайту')?></a>
 	</div>
 	
-	
 	<table cellpadding="0" cellspacing="0" class="table table-bordered">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
@@ -23,7 +22,6 @@
 			$class = ' class="altrow"';
 		}
 		
-		we($user);
 	?>
 	<tr<?php echo $class;?>>
 <?/* <<<<<<< HEAD 
@@ -31,7 +29,7 @@
 		// <td><?php echo $user['User']['login']; ?>&nbsp;</td>
 		// <td><?php echo $user['User']['first_name']; ?>&nbsp;</td>
 		// <td><?php echo $user['User']['last_name']; ?>&nbsp;</td>
-		// <td><?php echo $user['User']['_email']; ?>&nbsp;</td>
+		// <td><?php echo $user['User']['email']; ?>&nbsp;</td>
 		<td><?php echo $user['User']['description']; ?>&nbsp;</td>
 =======*/?>
 		<td><?php echo $user['User']['id'] ?>&nbsp;</td>
