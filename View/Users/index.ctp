@@ -8,10 +8,9 @@
 	<table cellpadding="0" cellspacing="0" class="table table-bordered">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('login');?></th>
-			<th><?php echo $this->Paginator->sort('user_hash');?></th>
-			<th><?php echo $this->Paginator->sort('user_ip');?></th>
-			<th><?php echo $this->Paginator->sort('user_email');?></th>
+			<th><?php echo $this->Paginator->sort('login');?></th>			
+			<th><?php echo $this->Paginator->sort('ip');?></th>
+			<th><?php echo $this->Paginator->sort('email');?></th>
 			<th><?php echo $this->Paginator->sort('autorize');?></th>
 			<th><?php echo $this->Paginator->sort('status');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
@@ -23,18 +22,28 @@
 		if ($i++ % 2 == 0) {
 			$class = ' class="altrow"';
 		}
+		
+		we($user);
 	?>
 	<tr<?php echo $class;?>>
+<?/* <<<<<<< HEAD 
 		<td><?php echo $user['User']['id'] ?>&nbsp;</td>
-		// <td><?php echo $user['User']['_login']; ?>&nbsp;</td>
+		// <td><?php echo $user['User']['login']; ?>&nbsp;</td>
 		// <td><?php echo $user['User']['first_name']; ?>&nbsp;</td>
 		// <td><?php echo $user['User']['last_name']; ?>&nbsp;</td>
 		// <td><?php echo $user['User']['_email']; ?>&nbsp;</td>
 		<td><?php echo $user['User']['description']; ?>&nbsp;</td>
+=======*/?>
+		<td><?php echo $user['User']['id'] ?>&nbsp;</td>
+		<td><?php echo $user['User']['login']; ?>&nbsp;</td>		
+		<td><?php echo $user['User']['ip']; ?>&nbsp;</td>		
+		<td><?php echo $user['User']['email']; ?>&nbsp;</td>
+		<td><?php echo $user['User']['autorize']; ?>&nbsp;</td>
+		<td><?php echo $user['User']['status']; ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $user['User']['_id'])); ?> | 
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $user['User']['_id'])); ?> | 
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $user['User']['_id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['_id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $user['User']['id'])); ?> | 
+			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $user['User']['id'])); ?> | 
+			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $user['User']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -47,7 +56,7 @@
 		<li><?php echo $this->Paginator->next(' >>', array(), null, array('class' => 'disabled', 'tag'=>'a'));?></li>
 		</ul>
 	</div>
-	<?  we($user);?>
+	
 </div>
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
