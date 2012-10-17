@@ -7,12 +7,12 @@ class UsersController extends AppController {
 	
 	public $components= array ('Email');
 	
-	public $paginate = array(
+	/*public $paginate = array(
         'limit' => 1,
         'order' => array(
 	 		'Users.id' => 'asc',
 	        )
-	    );
+	    );*/
 	
 	
 	public function beforeRender () {

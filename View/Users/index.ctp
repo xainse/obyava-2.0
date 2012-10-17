@@ -24,14 +24,6 @@
 		
 	?>
 	<tr<?php echo $class;?>>
-<?/* <<<<<<< HEAD 
-		<td><?php echo $user['User']['id'] ?>&nbsp;</td>
-		// <td><?php echo $user['User']['login']; ?>&nbsp;</td>
-		// <td><?php echo $user['User']['first_name']; ?>&nbsp;</td>
-		// <td><?php echo $user['User']['last_name']; ?>&nbsp;</td>
-		// <td><?php echo $user['User']['email']; ?>&nbsp;</td>
-		<td><?php echo $user['User']['description']; ?>&nbsp;</td>
-=======*/?>
 		<td><?php echo $user['User']['id'] ?>&nbsp;</td>
 		<td><?php echo $user['User']['login']; ?>&nbsp;</td>		
 		<td><?php echo $user['User']['ip']; ?>&nbsp;</td>		
