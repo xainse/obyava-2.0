@@ -7,7 +7,7 @@ class UsersController extends AppController {
 	
 	public $components= array ('Email');
 	
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	/*public $paginate = array(
         'limit' => 1,
 =======

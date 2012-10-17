@@ -23,13 +23,13 @@
 		//we($region);
 	?>
 	<tr<?php echo $class;?>>
-		<td><?php echo $Region['Region']['id'] ?>&nbsp;</td>
-		<td><?php echo $Region['Region']['name']; ?>&nbsp;</td>		
-		<td><?php echo $Region['Region']['name_ru']; ?>&nbsp;</td>
+		<td><?php echo $region['Region']['id'] ?>&nbsp;</td>
+		<td><?php echo $region['Region']['name']; ?>&nbsp;</td>		
+		<td><?php echo $region['Region']['name_ru']; ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view',  $Region['Region']['id'])); ?> | 
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit',  $Region['Region']['id'])); ?> | 
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete',  $Region['Region']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true),  $Region['Region']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action' => 'view',  $region['Region']['id'])); ?> | 
+			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit',  $region['Region']['id'])); ?> | 
+			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete',  $region['Region']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true),  $region['Region']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

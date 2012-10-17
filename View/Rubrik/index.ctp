@@ -22,14 +22,14 @@
 		//we($rubrik);
 	?>
 	<tr<?php echo $class;?>>
-		<td><?php echo $Rubrik['Rubrik']['id'] ?>&nbsp;</td>
-		<td><?php echo $Rubrik['Rubrik']['name']; ?>&nbsp;</td>		
-		<td><?php echo $Rubrik['Rubrik']['comment']; ?>&nbsp;</td>		
-		<td><?php echo $Rubrik['Rubrik']['template']; ?>&nbsp;</td>
+		<td><?php echo $rubrik['Rubrik']['id'] ?>&nbsp;</td>
+		<td><?php echo $rubrik['Rubrik']['name']; ?>&nbsp;</td>		
+		<td><?php echo $rubrik['Rubrik']['comment']; ?>&nbsp;</td>		
+		<td><?php echo $rubrik['Rubrik']['template']; ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view',  $Rubrik['Rubrik']['id'])); ?> | 
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit',  $Rubrik['Rubrik']['id'])); ?> | 
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete',  $Rubrik['Rubrik']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true),  $Rubrik['Rubrik']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action' => 'view',  $rubrik['Rubrik']['id'])); ?> | 
+			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit',  $rubrik['Rubrik']['id'])); ?> | 
+			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete',  $rubrik['Rubrik']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true),  $rubrik['Rubrik']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

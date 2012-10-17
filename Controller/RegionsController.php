@@ -20,7 +20,7 @@ class RegionsController extends AppController {
 	public function index() {
 		$this->Region->recursive = 0;
 		
-		$this->set('Region', $this->paginate());
+		$this->set('regions', $this->paginate());
 	}
 	public function view($id=null){
 		if (!$id) {

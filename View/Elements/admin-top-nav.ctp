@@ -20,11 +20,11 @@
 				    	<a class="dropdown-toggle" href="#"><?php echo __('Редагування')?> <b class="caret"></b></a>
 				    	<ul class="dropdown-menu">
                           <li><?php echo $this->Html->link(__('Адміністратори', 1), array('controller' => 'admins', 'action'=>'index'), array())?> </li>
-                          <li><a href="../Users/"><?php echo __('Користувачі')?></a></li>                          
+                          <li><a href="/Users/"><?php echo __('Користувачі')?></a></li>                          
                           <li class="divider"></li>
                           <li class="nav-header"><?php echo __('Оголошення')?></li>
-                          <li><a href="../rubriks/"><?php echo __('Рубрики')?></a></li>
-                          <li><a href="../regions/"><?php echo __('Міста')?></a></li>
+                          <li><a href="/rubriks/"><?php echo __('Рубрики')?></a></li>
+                          <li><a href="/regions/"><?php echo __('Міста')?></a></li>
                           <li><a href="#"><?php echo __('Телефонний довідник')?></a></li>
                         </ul>
 				    </li>
