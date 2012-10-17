@@ -7,10 +7,15 @@ class UsersController extends AppController {
 	
 	public $components= array ('Email');
 	
+<<<<<<< HEAD
 	/*public $paginate = array(
         'limit' => 1,
+=======
+	public $paginate = array(
+        'limit' => 20,
+>>>>>>> origin
         'order' => array(
-	 		'Users.id' => 'asc',
+	 		'User.id' => 'asc',
 	        )
 	    );*/
 	
@@ -23,8 +28,7 @@ class UsersController extends AppController {
 	}
 	
 	public function index (){
-		$this->User->recursive = 0;
-		
+		$this->User->recursive = 0;		
 		$this->set('users', $this->paginate());
 	}
 	public function view($id=null) {
