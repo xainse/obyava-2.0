@@ -3,6 +3,7 @@
 <fieldset>
 		<legend><?php printf (__('Edit %s', true), __('Rubrik', true));?></legend>
 	<?php
+		echo $this->Form->hidden('id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('comment');
 		echo $this->Form->input('template');

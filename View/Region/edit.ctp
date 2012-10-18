@@ -3,6 +3,7 @@
 <fieldset>
 		<legend><?php printf (__('Edit %s', true), __('Region', true));?></legend>
 	<?php
+		echo $this->Form->hidden('id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('name_ru');
 	?>

@@ -44,12 +44,12 @@ class RubriksController extends AppController {
 	public function edit($id = null) {
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(sprintf(__('Invalid %s', true)));
-			$this->redirect(array('action' => 'index'));
+			$this->redirect(array('action'=>'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Rubrik->save($this->data)) {
 				$this->Session->setFlash(__('The record has been saved',true));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The record could not be saved. Please, try again.', true));
 			}
