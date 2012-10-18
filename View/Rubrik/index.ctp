@@ -1,7 +1,7 @@
 <div class="admins index">
 	<h2><?php echo __('рубрики');?></h2>	
 	<div class="nav">
-	<a href="/admins/add" class="btn"><i class="icon-plus"></i><?php echo __('нова рубрика')?></a>
+	<a href="/rubriks/add" class="btn"><i class="icon-plus"></i><?php echo __('нова рубрика')?></a>
 	</div>
 	
 	<table cellpadding="0" cellspacing="0" class="table table-bordered">

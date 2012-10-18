@@ -33,17 +33,17 @@ class RegionsController extends AppController {
 		if (!empty($this->data)) {
 			$this->Region->create();
 			if ($this->Region->save($this->data)) {
-				$this->Session->setFlesh(__('The record has been saved', true));
+				$this->Session->setFlash(__('The record has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				$this->Session->setFlesh(__('The record could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The record could not be saved. Please, try again.', true));
 			}
 		}
 		$this->render('edit');
 	}
 	public function edit ($id=null) {
 		if (!$id && empty($this->data)){
-			$this->Session->setFlesh(sprintf(__('Invalid %s', true)));
+			$this->Session->setFlash(sprintf(__('Invalid %s', true)));
 			$this->redirect(array('action'=>'index'));
 		}
 		if (!empty($this->data)) {
@@ -59,7 +59,7 @@ class RegionsController extends AppController {
 		}
 	}
 	public function delete ($id=null) {
-		if (!id) {
+		if (!$id) {
 			$this->Session->setFlash(__('Indalid id', true));
 			$this->redirect(array('actions'=>'index'));
 		}

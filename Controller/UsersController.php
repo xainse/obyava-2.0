@@ -43,7 +43,7 @@ class UsersController extends AppController {
 		if (!empty($this->data)){
 			$this->User->create();
 			if ($this->User->save($this->data)) {
-				$this->Session->setFlesh(__('The record has been saved', true));
+				$this->Session->setFlash(__('The record has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 			//we($this->Admin);
@@ -77,7 +77,7 @@ class UsersController extends AppController {
 			$this->redirect(array('actions'=>'index'));
 		}
 		if ($this->User->delete($id)) {
-			$this->Session->setFlesh(__('Account deleted', true));
+			$this->Session->setFlash(__('Account deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		$this->Session->setFlash(__('Account was not deleted', true));

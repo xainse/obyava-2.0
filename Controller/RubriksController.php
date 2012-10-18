@@ -32,34 +32,34 @@ class RubriksController extends AppController {
 	public function add() {
 		if (!empty($this->data)) {
 			$this->Rubrik->create();
-			if ($this->rubrik->save($this->data)) {
-				$this->Session->setFlesh(__('The record has been saved', true));
+			if ($this->Rubrik->save($this->data)) {
+				$this->Session->setFlash(__('The record has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				$this->Session->setFlesh(__('The record could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The record could not be saved. Please, try again.', true));
 			}
 		}
 		$this->render('edit');
 	}
-	public function edit ($id=null) {
-		if (!$id && empty($this->data)){
-			$this->Session->setFlesh(sprintf(__('Invalid %s', true)));
-			$this->redirect(array('action'=>'index'));
+	public function edit($id = null) {
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(sprintf(__('Invalid %s', true)));
+			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Rubrik->save($this->data)) {
-				$this->Session->setFlash(__('The record been saved', true));
-				$this->redirect(array('action'=>'index'));
+				$this->Session->setFlash(__('The record has been saved',true));
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The record count not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The record could not be saved. Please, try again.', true));
 			}
 		}
 		if (empty($this->data)) {
-			$this->data=$this->Rubrik->read(null, $id);
+			$this->data = $this->Rubrik->read(null, $id);
 		}
 	}
-	public function delete ($id=null) {
-		if (!id) {
+	public function delete ($id = null) {
+		if (!$id) {
 			$this->Session->setFlash(__('Indalid id', true));
 			$this->redirect(array('actions'=>'index'));
 		}
