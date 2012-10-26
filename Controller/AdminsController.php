@@ -8,11 +8,24 @@ class AdminsController extends AppController {
 	public $components= array ('Email');
 	
 	public $paginate = array(
-        'limit' => 20,
+        'limit' => 1,
         'order' => array(
 	 		'Admin.id' => 'asc',
 	        )
 	    );
+	public  $validate = array(
+        'login' => array(
+            'alphaNumeric' => array(
+                'rule' => 'alphaNumeric',
+                'required' => true,
+                'message' => '������ ����� � �����'
+                ),
+            'between' => array(
+                'rule' => array('between', 5, 15),
+                'message' => '�� 5 �� 15 ��������'
+            )
+            )
+            );
 	
 	
 	public function beforeRender () {
@@ -22,12 +35,12 @@ class AdminsController extends AppController {
 		
 	}
 	
-	public function index (){
+	public function gate_index (){
 		$this->Admin->recursive = 0;
 		
 		$this->set('admins', $this->paginate());
 	}
-	public function view($id=null) {
+	public function gate_view($id=null) {
 		if (!$id){
 			$this->Session->setFlash(__('Invalid nquiry', true));
 			$this->redirect(array('action'=>'index'));
@@ -35,7 +48,7 @@ class AdminsController extends AppController {
 		$this->set('admin',$this->Admin->read(null, $id));
 	}
 	
-	public function add() {
+	public function gate_add() {
 		if (!empty($this->data)){
 			$this->Admin->create();
 			if ($this->Admin->save($this->data)) {
@@ -47,10 +60,10 @@ class AdminsController extends AppController {
 			}
 		}
 		
-		$this->render('edit');
+		$this->render('gate_edit');
 	}
 	
-	public function edit($id=null){
+	public function gate_edit($id=null){
 		if (!$id && empty($this->data)){
 			$this->Session->setFlash (sprintf(__('Invalid %s', true)));
 			$this->redirect(array('action'=>'index'));
@@ -67,7 +80,7 @@ class AdminsController extends AppController {
 			$this->data =$this->Admin->read(null, $id);
 		}
 	}
-	public function delete($id=null) {
+	public function gate_delete($id=null) {
 		if (!$id){
 			$this->Session->setFlash(__('Invalid id', true));
 			$this->redirect(array('actions'=>'index'));
@@ -79,50 +92,21 @@ class AdminsController extends AppController {
 		$this->Session->setFlash(__('Account was not deleted', true));
 		$this->redirect(array('action'=>'index'));
 	}
-	
-	
-	public function gate_login () {
-		$this->layout = 'ajax';
-		
-		if ($this->Auth->login() /*&& $this->isAuthorized()*/){
-			we($_SESSION);
-			we($this->request);
-			$this->redirect($this->Auth->loginRedirect);	
-		} elseif ($this->Auth->login() && !$this->isAuthorized()) {			
-			$this->redirect(array('action'=>'noaccess'));
+	public function login () {
+		if ($this->Auth->login() && $this->isAuthorized()){
+		$this->redirect($this->Auth->loginRedirect);
+		} elseif ($this->Auth->login() && !$this->isAuthorized()) {
+		$this->redirect(array('action'=>'noaccess'));
 		} elseif (!empty($this->request->data)) {
-			//$this->Session->setFlash($this->Auth->authError, 'alert', array( 'plugin' => 'TwitterBootstrap', 'class' => 'alert-error'));
+		$this->Session->setFlash($this->Auth->authError);
 		}
-		
-		
-		
-	/*	if (!empty($this->data)){			
-			$conditions =array("login='".$this->data['Admin']['login']."'","password='".$this->hash($this->data['Admin']['login'])."'");
-			$someone = $this->Admin->find("first", array('conditions'=>$conditions));
-			//we ($someone);
-			if (!empty($someone)){
-				if ($someone['Admin']['confirm_code'] == '1'){
-				$this->Session->write('Admin',$someone['Admin']);
-				if ($this->Session->check('back_url')) {
-					$backUrl = '/'.$this->Session->read('black_Url');
-					
-					$this->Session->delete('back_url');
-					$this->redirect($backUrl);
-				} else {
-					$this->redirekt(array('controller'=>'settings', 'action'=>'index'));				
-				}
-				} else {
-					$this->Session->write('NoConfirmedUser', $someone['admin']);
-					$this->Session->setFlash('You not complite yor registration. Check your email. <a href="/user/resend/">ReSend Email.</a>');
-					$this->redirect(array('action'=>'thankyou'));
-				}
-			} else {
-				//we ($this->hahs($this->data['Admin']['password']));
-				$this->Admin->invalidate('login', 'not_correct');
-			}
+		$this->render('login', 'ajax');
 		}
-		*/
-	}
+	public function isAuthorized() {
+		
+		return $this->Auth->user('id');
+	}	
+
 	
 	public function logout () {
 		$this->Session->delete('Admin');
@@ -160,7 +144,8 @@ class AdminsController extends AppController {
 		return md5($string);
 	}
 	
-	
-	
-	
+	public function  gate_dashboard() {
+		$this->layout = 'admin_layout';
+	}
+		
 }

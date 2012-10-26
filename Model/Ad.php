@@ -14,5 +14,19 @@ class Ad extends AppModel {
 		'Region' => array(
 			'className' => 'Region',
 		),
-	);
+		'Details_auto'=> array(
+		'className' => 'Details_auto',
+	),
+	 'Details_immovable'=> array(
+		'className'=> 'Details_immovable',
+	),
+	);/*
+	public $hasAndBelongsToMany = array (
+		'details_auto'=> array(
+		'className' => 'details_auto',
+	),
+	 'details_immovables'=> array(
+		'className'=> ' details_immovables',
+	),
+	);*/
 }

@@ -1,7 +1,7 @@
 <div class="admins index">
 	<h2><?php echo __('міста');?></h2>	
 	<div class="nav">
-	<a href="/admins/add" class="btn"><i class="icon-plus"></i><?php echo __('нове місто')?></a>
+	<a href="/regions/add" class="btn"><i class="icon-plus"></i><?php echo __('нове місто')?></a>
 	</div>
 	
 	<table cellpadding="0" cellspacing="0" class="table table-bordered">

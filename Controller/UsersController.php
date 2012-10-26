@@ -27,11 +27,11 @@ class UsersController extends AppController {
 		
 	}
 	
-	public function index (){
+	public function gate_index (){
 		$this->User->recursive = 0;		
 		$this->set('users', $this->paginate());
 	}
-	public function view($id=null) {
+	public function gate_view($id=null) {
 		if (!$id){
 			$this->Session->setFlash(__('Invalid nquiry', true));
 			$this->redirect(array('action'=>'index'));
@@ -39,7 +39,7 @@ class UsersController extends AppController {
 		$this->set('user',$this->User->read(null, $id));
 	}
 	
-	public function add() {
+	public function gate_add() {
 		if (!empty($this->data)){
 			$this->User->create();
 			if ($this->User->save($this->data)) {
@@ -51,10 +51,10 @@ class UsersController extends AppController {
 			}
 		}
 		
-		$this->render('edit');
+		$this->render('gate_edit');
 	}
 	
-	public function edit($id=null){
+	public function gate_edit($id=null){
 		if (!$id && empty($this->data)){
 			$this->Session->setFlash (sprintf(__('Invalid %s', true)));
 			$this->redirect(array('action'=>'index'));
@@ -71,7 +71,7 @@ class UsersController extends AppController {
 			$this->data =$this->User->read(null, $id);
 		}
 	}
-	public function delete($id=null) {
+	public function gate_delete($id=null) {
 		if (!$id){
 			$this->Session->setFlash(__('Invalid id', true));
 			$this->redirect(array('actions'=>'index'));

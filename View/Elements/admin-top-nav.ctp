@@ -15,17 +15,17 @@
 			<div class="nav-collapse">
 				<!-- .nav, .navbar-search, .navbar-form, etc -->
 				<ul class="nav nav-tabs">
-				    <li class="active"><a href="<?php echo $this->webroot?>admins/">Головна сторінка</a></li>
+				    <li class="active"><a href="<?php echo $this->webroot?>gate/admins/dashboard/">Головна сторінка</a></li>
 				    <li class="dropdown">
 				    	<a class="dropdown-toggle" href="#"><?php echo __('Редагування')?> <b class="caret"></b></a>
 				    	<ul class="dropdown-menu">
                           <li><?php echo $this->Html->link(__('Адміністратори', 1), array('controller' => 'admins', 'action'=>'index'), array())?> </li>
-                          <li><a href="<?php echo $this->webroot?>users/"><?php echo __('Користувачі')?></a></li>                          
+                          <li><a href="<?php echo $this->webroot?>gate/users/"><?php echo __('Користувачі')?></a></li>                          
                           <li class="divider"></li>
                           <li class="nav-header"><?php echo __('Контент сайту')?></li>
-                          <li><a href="<?php echo $this->webroot?>ads/"><?php echo __('Оголошення')?></a></li>
-                          <li><a href="<?php echo $this->webroot?>rubriks/"><?php echo __('Рубрики')?></a></li>
-                          <li><a href="<?php echo $this->webroot?>regions/"><?php echo __('Міста')?></a></li>
+                          <li><a href="<?php echo $this->webroot?>gate/ads/"><?php echo __('Оголошення')?></a></li>
+                          <li><a href="<?php echo $this->webroot?>gate/rubriks/"><?php echo __('Рубрики')?></a></li>
+                          <li><a href="<?php echo $this->webroot?>gate/regions/"><?php echo __('Міста')?></a></li>
                           <li><a href="#"><?php echo __('Телефонний довідник')?></a></li>
                         </ul>
 				    </li>

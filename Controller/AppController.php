@@ -45,47 +45,42 @@ class AppController extends Controller {
 	
 	public static $cronLogType = 'cron';
 	
-/*<<<<<<< HEAD
-	function beforeFilter() {
-		parent::beforeFilter();
-=======*/
 	public $components = array(
-        'Auth' => array(
-            'authorize' => array('Controller'),
-            'loginAction' => array('controller' => 'admins', 'action' => 'login'),
-			//'loginAction' => array('controller' => 'admins', 'action' => 'noaccess'),
-			'loginRedirect' => array('controller' => 'admins', 'action' => 'dashboard'),
-			'logoutRedirect' => array('controller' => 'admins', 'action' => 'login'),
-			'authError'		 => 'Error! Wrong combination login/password. Try again.',
-        ),
-        'Cookie' => array('name' => 'obyavasec'),
-        'Session'
-    );
+			'Auth' => array(
+				'loginAction' => array(
+				'controller' => 'admins',
+				'action' => 'login',
+				//'plugin' => 'users'
+			),
+			'loginRedirect' => array('controller' => 'admins', 'action' => 'dashboard', 'gate' => true),
+			'authError' => 'Did you really think you are allowed to see that?',
+			'authenticate' => array(
+				'Form' => array(
+					'userModel' => 'Admin', 
+					'fields' => array('username'=>'login','password'=>'password'), 
+					),
+				)
+			),
+				'Cookie' => array('name' => 'obyavasec'),
+				'Session'
+		);
+	
 	
 	public function beforeFilter(){
-		parent::beforeFilter();		
-        //Устанавливаем поля для авторизации в компоненте Auth вместо тех, что идут по-умолчанию
-        $this->Auth->fields = array('username'=>'login','password'=>'password');
-        // Устанавливаем действия доступные без авторизации по всей системе
-        //$this->Auth->allow(array('display'));
-        $this->Auth->allow(array());    
-        //Расширим компонент Auth при помощи действия isAuthorized        
-        $this->Auth->authorize = array('Controller');
-        //Разрешим доступ только тем пользователям чьи профили активны
-        $this->Auth->userScope = array('User.active = 1');
-        //Передаём компонент авторизации в страницы вида        
-        $this->set('Auth',$this->Auth->user());
+		parent::beforeFilter();
+				
+		$this->set('Auth',$this->Auth->user());
+				
+		if ($this->params['prefix'] == 'gate') {
+			if (!$this->Auth->user('id')) {
 
-	
-        if ($this->params['prefix'] == 'gate') {
-        	we('Routing.prefixes');
-        }
+				$this->Session->write('back_url', $this->here);
+				$this->redirect(array('controller'=>'admins','action'=>'login', 'gate'=>false));
+			}
+			$this->disableCache();
+			$this->layout = 'admin_layout';
+		}
 	}
-		
-		
-		
-		
-		
-		
+	
 }
 	

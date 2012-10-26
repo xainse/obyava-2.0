@@ -47,13 +47,13 @@ label {
 	widht: 175px;
 }
 label, .input input {
-	margin: 7px 3px;
+	margin: 3px 45px;
 }
 
 div.submit {
-	widht: 300px;
-	padding: 5px;
+	margin: 5px 45px;
 	text-allign: center;
+	float: left;
 }
 
 #AdminLoginForm .error-message{

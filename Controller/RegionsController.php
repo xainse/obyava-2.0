@@ -17,19 +17,19 @@ class RegionsController extends AppController {
 		parent::beforeRender();
 		$this->layout= 'admin_layout';
 	}
-	public function index() {
+	public function gate_index() {
 		$this->Region->recursive = 0;
 		
 		$this->set('regions', $this->paginate());
 	}
-	public function view($id=null){
+	public function gate_view($id=null){
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid nquiry', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		$this->set('Region', $this->Region->read(null, $id));
 	}
-	public function add() {
+	public function gate_add() {
 		if (!empty($this->data)) {
 			$this->Region->create();
 			if ($this->Region->save($this->data)) {
@@ -39,9 +39,9 @@ class RegionsController extends AppController {
 				$this->Session->setFlash(__('The record could not be saved. Please, try again.', true));
 			}
 		}
-		$this->render('edit');
+		$this->render('gate_edit');
 	}
-	public function edit ($id=null) {
+	public function gate_edit ($id=null) {
 		if (!$id && empty($this->data)){
 			$this->Session->setFlash(sprintf(__('Invalid %s', true)));
 			$this->redirect(array('action'=>'index'));
@@ -58,7 +58,7 @@ class RegionsController extends AppController {
 			$this->data=$this->Region->read(null, $id);
 		}
 	}
-	public function delete ($id=null) {
+	public function gate_delete ($id=null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Indalid id', true));
 			$this->redirect(array('actions'=>'index'));
