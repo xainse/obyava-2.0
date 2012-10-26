@@ -22,12 +22,12 @@ class AdminsController extends AppController {
 		
 	}
 	
-	public function index (){
+	public function gate_index (){
 		$this->Admin->recursive = 0;
 		
 		$this->set('admins', $this->paginate());
 	}
-	public function view($id=null) {
+	public function gate_view($id=null) {
 		if (!$id){
 			$this->Session->setFlash(__('Invalid nquiry', true));
 			$this->redirect(array('action'=>'index'));
@@ -35,7 +35,7 @@ class AdminsController extends AppController {
 		$this->set('admin',$this->Admin->read(null, $id));
 	}
 	
-	public function add() {
+	public function gate_add() {
 		if (!empty($this->data)){
 			$this->Admin->create();
 			if ($this->Admin->save($this->data)) {
@@ -47,10 +47,10 @@ class AdminsController extends AppController {
 			}
 		}
 		
-		$this->render('edit');
+		$this->render('gate_edit');
 	}
 	
-	public function edit($id=null){
+	public function gate_edit($id=null){
 		if (!$id && empty($this->data)){
 			$this->Session->setFlash (sprintf(__('Invalid %s', true)));
 			$this->redirect(array('action'=>'index'));
@@ -67,7 +67,7 @@ class AdminsController extends AppController {
 			$this->data =$this->Admin->read(null, $id);
 		}
 	}
-	public function delete($id=null) {
+	public function gate_delete($id=null) {
 		if (!$id){
 			$this->Session->setFlash(__('Invalid id', true));
 			$this->redirect(array('actions'=>'index'));
@@ -80,9 +80,22 @@ class AdminsController extends AppController {
 		$this->redirect(array('action'=>'index'));
 	}
 	public function login () {
+		if ($this->Auth->login() && $this->isAuthorized()){
+		$this->redirect($this->Auth->loginRedirect);
+		} elseif ($this->Auth->login() && !$this->isAuthorized()) {
+		$this->redirect(array('action'=>'noaccess'));
+		} elseif (!empty($this->request->data)) {
+		$this->Session->setFlash($this->Auth->authError);
+		}
+		$this->render('login', 'ajax');
+		}
+	public function isAuthorized() {
+		return $this->Auth->user('id');
+		}	
+/*	public function login () {
 		$this->layout = 'ajax';
 		
-		if ($this->Auth->login() /*&& $this->isAuthorized()*/){
+		if ($this->Auth->login() /*&& $this->isAuthorized()*//*){
 			we($_SESSION);
 			we($this->request);
 			$this->redirect($this->Auth->loginRedirect);	
@@ -119,8 +132,8 @@ class AdminsController extends AppController {
 				$this->Admin->invalidate('login', 'not_correct');
 			}
 		}
-		*/
-	}
+		*//*
+	}*/
 	
 	public function logout () {
 		$this->Session->delete('Admin');
@@ -157,7 +170,9 @@ class AdminsController extends AppController {
 		}
 		return md5($string);
 	}
-	
+	public function  gate_dashboard() {
+		$this->layout = 'admin_layout';
+	}
 	
 	
 	

@@ -50,6 +50,40 @@ class AppController extends Controller {
 		parent::beforeFilter();
 =======*/
 	public $components = array(
+				'Auth' => array(
+				'loginAction' => array(
+				'controller' => 'admins',
+				'action' => 'login',
+				//'plugin' => 'users'
+				),
+				'loginRedirect' => array('controller' => 'admins', 'action' => 'dashboard', 'gate' => true),
+				'authError' => 'Did you really think you are allowed to see that?',
+				'authenticate' => array(
+				'Form' => array(
+				'userModel' => 'Admin', // Ìîäåëü äëÿ àóòåíòèôèêàöèè (òàáëèöà â áàçå)
+				'fields' => array('username'=>'login','password'=>'password'), //Óñòàíàâëèâàåì ïîëÿ äëÿ àâòîğèçàöèè â êîìïîíåíòå Auth âìåñòî òåõ, ÷òî èäóò ïî-óìîë÷àíèş
+				),
+				)
+				),
+				'Cookie' => array('name' => 'obyavasec'),
+				'Session'
+				);
+		public function beforeFilter(){
+				parent::beforeFilter();
+				
+				$this->set('Auth',$this->Auth->user());
+				
+				if ($this->params['prefix'] == 'gate') {
+				if (!$this->Auth->user('id')) {
+				$this->Session->write('back_url', $this->here);
+				$this->redirect(array('controller'=>'admins','action'=>'login', 'gate'=>false));
+				}
+				$this->disableCache();
+				$this->layout = 'admin_layout';
+				}
+				}
+				
+	/*public $components = array(
         'Auth' => array(
             'authorize' => array('Controller'),
             'loginAction' => array('controller' => 'admins', 'action' => 'login'),
@@ -60,9 +94,9 @@ class AppController extends Controller {
         ),
         'Cookie' => array('name' => 'obyavasec'),
         'Session'
-    );
+    );*/
 	
-	public function beforeFilter(){
+	/*public function beforeFilter(){
 		parent::beforeFilter();
 		
         //Ğ£ÑÑ‚Ğ°Ğ½Ğ°Ğ²Ğ»Ğ¸Ğ²Ğ°ĞµĞ¼ Ğ¿Ğ¾Ğ»Ñ Ğ´Ğ»Ñ Ğ°Ğ²Ñ‚Ğ¾Ñ€Ğ¸Ğ·Ğ°Ñ†Ğ¸Ğ¸ Ğ² ĞºĞ¾Ğ¼Ğ¿Ğ¾Ğ½ĞµĞ½Ñ‚Ğµ Auth Ğ²Ğ¼ĞµÑÑ‚Ğ¾ Ñ‚ĞµÑ…, Ñ‡Ñ‚Ğ¾ Ğ¸Ğ´ÑƒÑ‚ Ğ¿Ğ¾-ÑƒĞ¼Ğ¾Ğ»Ñ‡Ğ°Ğ½Ğ¸Ñ
@@ -93,7 +127,7 @@ class AppController extends Controller {
 				$this->redirect('/');
 		}
 	*/
-	}
+	//}
 		
 		
 		

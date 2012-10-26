@@ -40,7 +40,7 @@ div#centered {margin-top: expression(((document.documentElement.offsetHeight/2)
 
 </div>
 
-<?php echo $this->element('sql_dump')?>
+<?php echo $this->element('sql_dump')?>!
 
 <script type="text/javascript">
 	document.forms[0].elements['AdminLogin'].focus();
