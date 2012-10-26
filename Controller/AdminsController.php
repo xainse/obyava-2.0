@@ -8,7 +8,7 @@ class AdminsController extends AppController {
 	public $components= array ('Email');
 	
 	public $paginate = array(
-        'limit' => 1,
+        'limit' => 20,
         'order' => array(
 	 		'Admin.id' => 'asc',
 	        )
@@ -79,7 +79,9 @@ class AdminsController extends AppController {
 		$this->Session->setFlash(__('Account was not deleted', true));
 		$this->redirect(array('action'=>'index'));
 	}
-	public function login () {
+	
+	
+	public function gate_login () {
 		$this->layout = 'ajax';
 		
 		if ($this->Auth->login() /*&& $this->isAuthorized()*/){

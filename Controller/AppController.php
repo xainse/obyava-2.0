@@ -63,36 +63,23 @@ class AppController extends Controller {
     );
 	
 	public function beforeFilter(){
-		parent::beforeFilter();
-		
+		parent::beforeFilter();		
         //Устанавливаем поля для авторизации в компоненте Auth вместо тех, что идут по-умолчанию
         $this->Auth->fields = array('username'=>'login','password'=>'password');
         // Устанавливаем действия доступные без авторизации по всей системе
         //$this->Auth->allow(array('display'));
-        $this->Auth->allow(array('*'));
-        
-        
+        $this->Auth->allow(array());    
         //Расширим компонент Auth при помощи действия isAuthorized        
         $this->Auth->authorize = array('Controller');
         //Разрешим доступ только тем пользователям чьи профили активны
         $this->Auth->userScope = array('User.active = 1');
         //Передаём компонент авторизации в страницы вида        
         $this->set('Auth',$this->Auth->user());
-		
-	/*	$this->Auth->fields = array('username'=>'login','password'=>'password');
-		
->>>>>>> origin
-		if (!$this->Session->check('Admin') && !in_array($this->action, $this->allow_pages)){//||&this->Session->read("Admin.permission_level") !=$this->admin_level) {
-			$this->Session->write('back_url', $this->here);
-			$this->redirect(array('controller'=>'admins','action'=>'login'));
-		}
-		//check users and admin controllers
-		if ($this->Session->read("Admin.permission_level")!=$this->admin_level &&
-			$this->Session->read("Admin.permission_level")==$this->user_level&&
-			!in_array($this->params['controller'], $this->users_controllers)) {
-				$this->redirect('/');
-		}
-	*/
+
+	
+        if ($this->params['prefix'] == 'gate') {
+        	we('Routing.prefixes');
+        }
 	}
 		
 		
