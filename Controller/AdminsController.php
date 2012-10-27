@@ -13,19 +13,7 @@ class AdminsController extends AppController {
 	 		'Admin.id' => 'asc',
 	        )
 	    );
-	public  $validate = array(
-        'login' => array(
-            'alphaNumeric' => array(
-                'rule' => 'alphaNumeric',
-                'required' => true,
-                'message' => 'Только буквы и цифры'
-                ),
-            'between' => array(
-                'rule' => array('between', 5, 15),
-                'message' => 'От 5 до 15 символов'
-            )
-            )
-            );
+	
 	
 	
 	public function beforeRender () {

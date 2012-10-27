@@ -1,7 +1,7 @@
 <div class="admins index">
 	<h2><?php echo __('Користувачі сайту');?></h2>	
 	<div class="nav">
-	<a href="/admins/add" class="btn"><i class="icon-plus"></i><?php echo __('новий користувач сайту')?></a>
+	<a href="/gate/users/add" class="btn"><i class="icon-plus"></i><?php echo __('новий користувач сайту')?></a>
 	</div>
 	
 	<table cellpadding="0" cellspacing="0" class="table table-bordered">

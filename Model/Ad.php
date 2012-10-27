@@ -20,13 +20,13 @@ class Ad extends AppModel {
 	 'Details_immovable'=> array(
 		'className'=> 'Details_immovable',
 	),
-	);/*
-	public $hasAndBelongsToMany = array (
+	);
+	public $hasOne = array (
 		'details_auto'=> array(
 		'className' => 'details_auto',
 	),
 	 'details_immovables'=> array(
 		'className'=> ' details_immovables',
 	),
-	);*/
+	);
 }
