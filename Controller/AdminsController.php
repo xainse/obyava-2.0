@@ -13,9 +13,6 @@ class AdminsController extends AppController {
 	 		'Admin.id' => 'asc',
 	        )
 	    );
-	
-	
-	
 	public function beforeRender () {
 		parent::beforeRender();
 		
@@ -91,50 +88,10 @@ class AdminsController extends AppController {
 		$this->render('login', 'ajax');
 		}
 	public function isAuthorized() {
+		
 		return $this->Auth->user('id');
-		}	
-/*	public function login () {
-		$this->layout = 'ajax';
-		
-		if ($this->Auth->login() /*&& $this->isAuthorized()*//*){
-			we($_SESSION);
-			we($this->request);
-			$this->redirect($this->Auth->loginRedirect);	
-		} elseif ($this->Auth->login() && !$this->isAuthorized()) {			
-			$this->redirect(array('action'=>'noaccess'));
-		} elseif (!empty($this->request->data)) {
-			//$this->Session->setFlash($this->Auth->authError, 'alert', array( 'plugin' => 'TwitterBootstrap', 'class' => 'alert-error'));
-		}
-		
-		
-		
-	/*	if (!empty($this->data)){			
-			$conditions =array("login='".$this->data['Admin']['login']."'","password='".$this->hash($this->data['Admin']['login'])."'");
-			$someone = $this->Admin->find("first", array('conditions'=>$conditions));
-			//we ($someone);
-			if (!empty($someone)){
-				if ($someone['Admin']['confirm_code'] == '1'){
-				$this->Session->write('Admin',$someone['Admin']);
-				if ($this->Session->check('back_url')) {
-					$backUrl = '/'.$this->Session->read('black_Url');
-					
-					$this->Session->delete('back_url');
-					$this->redirect($backUrl);
-				} else {
-					$this->redirekt(array('controller'=>'settings', 'action'=>'index'));				
-				}
-				} else {
-					$this->Session->write('NoConfirmedUser', $someone['admin']);
-					$this->Session->setFlash('You not complite yor registration. Check your email. <a href="/user/resend/">ReSend Email.</a>');
-					$this->redirect(array('action'=>'thankyou'));
-				}
-			} else {
-				//we ($this->hahs($this->data['Admin']['password']));
-				$this->Admin->invalidate('login', 'not_correct');
-			}
-		}
-		*//*
-	}*/
+	}	
+
 	
 	public function logout () {
 		$this->Session->delete('Admin');
@@ -171,10 +128,9 @@ class AdminsController extends AppController {
 		}
 		return md5($string);
 	}
+	
 	public function  gate_dashboard() {
 		$this->layout = 'admin_layout';
 	}
-	
-	
-	
+		
 }
