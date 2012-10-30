@@ -70,8 +70,8 @@ class AppController extends Controller {
 		parent::beforeFilter();
 				
 		$this->set('Auth',$this->Auth->user());
-				
-		if ($this->params['prefix'] == 'gate') {
+		
+		if (!empty($this->params['prefix']) && $this->params['prefix'] == 'gate') {
 			if (!$this->Auth->user('id')) {
 
 				$this->Session->write('back_url', $this->here);
@@ -79,7 +79,11 @@ class AppController extends Controller {
 			}
 			$this->disableCache();
 			$this->layout = 'admin_layout';
+		} else {
+			$this->Auth->allow();
 		}
+		
+		
 	}
 	
 }
