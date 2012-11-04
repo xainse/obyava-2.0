@@ -3,8 +3,19 @@
 App::uses('AppController', 'Controller');
 
 class AdsController extends AppController {
+
 	
 	public function gate_index () {
+		$last_ads = $this->Ad->find('all', array(
+//			'fields'	=> array(),
+			'order'	=> 'Ad.date DESC',
+			'limit' => 80,
+		));
+		
+		$this->set(compact('last_ads'));
+		$this->set(compact('ads'));
+	}
+	public function index () {
 		$last_ads = $this->Ad->find('all', array(
 //			'fields'	=> array(),
 			'order'	=> 'Ad.date DESC',
@@ -71,4 +82,5 @@ class AdsController extends AppController {
 		$this->Session->setFlash(__('Account was not deleted', true));
 		$this->redirect(array('action'=>'index'));
 	}
+	
 }
