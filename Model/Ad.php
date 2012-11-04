@@ -16,6 +16,7 @@ class Ad extends AppModel {
 		)
 	
 	);
+<<<<<<< HEAD
 	public $hasMany = array(
 		'details_auto' => array(
 			'className' => 'details_auto',
@@ -23,6 +24,14 @@ class Ad extends AppModel {
 		),'details_immovable' => array(
 			'className' => 'details_immovable',
 			
+=======
+	public $hasOne = array (
+		'details_auto'=> array(
+		'className' => 'details_auto',
+		),
+		 'details_immovables'=> array(
+			'className'=> ' details_immovables',
+>>>>>>> origin
 		),
 	);
 	
