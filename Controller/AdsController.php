@@ -4,11 +4,16 @@ App::uses('AppController', 'Controller');
 
 class AdsController extends AppController {
 
-	
-	public function index () {
+
+	public function beforeRender () {
+		parent::beforeRender();
 		
+		//$this->layout = 'admin_layout';
+		
+	}
+	
+	public function index () {		
 		$last_ads = $this->Ad->find('all', array(
-//			'fields'	=> array(),
 			'order'	=> 'Ad.date DESC',
 			'limit' => 80,
 		));
@@ -16,22 +21,7 @@ class AdsController extends AppController {
 		$this->set(compact('last_ads'));
 		$this->set(compact('ads'));
 	}
-	
-	public function index () {
-		$last_ads = $this->Ad->find('all', array(
-//			'fields'	=> array(),
-			'order'	=> 'Ad.date DESC',
-			'limit' => 80,
-		));
-		
-		$this->set(compact('last_ads'));
-	}
-	public function beforeRender () {
-		parent::beforeRender();
-		
-		//$this->layout = 'admin_layout';
-		
-	}
+
 	
 	public function gate_index () {
 		$last_ads = $this->Ad->find('all', array(
@@ -42,6 +32,7 @@ class AdsController extends AppController {
 		
 		$this->set(compact('last_ads'));
 	}
+	
 	public function gate_view($id=null) {
 		if (!$id){
 			$this->Session->setFlash(__('Invalid nquiry', true));

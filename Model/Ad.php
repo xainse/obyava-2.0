@@ -14,22 +14,26 @@ class Ad extends AppModel {
 		'Region' => array(
 			'className' => 'Region',
 		),
-		'Details_auto'=> array(
-		'className' => 'Details_auto',
+		/*
+		'DetailsAuto' => array(
+			'className' => 'DetailsAuto',
+			
 		),
-		 'Details_immovable'=> array(
-			'className'=> 'Details_immovable',
+		'DetailsImmovable' => array(
+			'className' => 'DetailsImmovable',
+		),*/
+	);
+	/*
+	public $hasOne = array(
+		'DetailsAuto' => array(
+			'className' => 'DetailsAuto',
+			
+		),
+		'DetailsImmovable' => array(
+			'className' => 'DetailsImmovable',
 		),
 	);
 	
-	public $hasMany = array(
-		'details_auto' => array(
-			'className' => 'details_auto',
-			
-		),'details_immovable' => array(
-			'className' => 'details_immovable',
-		),
-	);
 	
 	public $hasOne = array (
 		'details_auto'=> array(
@@ -39,5 +43,6 @@ class Ad extends AppModel {
 			'className'=> ' details_immovables',
 		),
 	);
+	*/
 	
 }
