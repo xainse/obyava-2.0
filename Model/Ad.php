@@ -22,6 +22,15 @@ class Ad extends AppModel {
 		),
 	);
 	
+	public $hasMany = array(
+		'details_auto' => array(
+			'className' => 'details_auto',
+			
+		),'details_immovable' => array(
+			'className' => 'details_immovable',
+		),
+	);
+	
 	public $hasOne = array (
 		'details_auto'=> array(
 		'className' => 'details_auto',
@@ -30,4 +39,5 @@ class Ad extends AppModel {
 			'className'=> ' details_immovables',
 		),
 	);
+	
 }

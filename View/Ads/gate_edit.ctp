@@ -4,9 +4,9 @@
 		<legend><?php printf (__('Edit %s', true), __('Ad', true));?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('rubrik_id');
+		echo $this->Form->input('rubrik_id', array('action' => 'edit'));
 		echo $this->Form->input('text');
-		echo $this->Form->input('date');
+		echo $this->Form->input('date', array('type'=> 'text'));
 		echo $this->Form->input('user_id');
 	?>
 	</fieldset>
