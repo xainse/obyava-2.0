@@ -16,11 +16,12 @@ class Ad extends AppModel {
 		),
 		'Details_auto'=> array(
 		'className' => 'Details_auto',
-	),
-	 'Details_immovable'=> array(
-		'className'=> 'Details_immovable',
-	),
+		),
+		 'Details_immovable'=> array(
+			'className'=> 'Details_immovable',
+		),
 	);
+	
 	public $hasOne = array (
 		'details_auto'=> array(
 		'className' => 'details_auto',
