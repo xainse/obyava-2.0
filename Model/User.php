@@ -21,7 +21,7 @@ class User extends AppModel {
 		        'message' => 'Пользователь с таким логином уже существует.'		 
             )
             ),
-            'email' => array(
+        'email' => array(
                 'isUnique' => array(
 		        'rule' => 'isUnique',
 		        'message' => 'Пользователь с таким email уже существует.'
@@ -30,19 +30,19 @@ class User extends AppModel {
         		'rule' => array('email', true),
         		'message' => 'Пожалуйста, введите действующий email адрес.')
     			),
-    		'password' => array(
+    	'password' => array(
     			'minLength'=> array(
 		         'rule' => array('minLength', '6'),  
        			 'message' => 'Пароль должен быть минимум 6 символов.'
    				) ,
     			
-    		'alphanumeric' => array(
+    	'alphanumeric' => array(
 	            'rule' => 'alphaNumeric',  
 	            'message' => 'Разрешены только буквы и цифры.',
 	            'last' => true
    				)
    				),
-   			'confirm_password' =>  array(   
+   		'confirm_password' =>  array(   
 					'custom' => array(
 					'rule' => array('Password2'),
 					'message' => 'При повторении пароль не совпадает!',
