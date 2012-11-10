@@ -15,12 +15,13 @@ class Rubrik extends AppModel {
             'isUnique' => array(
 		        'rule' => 'isUnique',
 		        'message' => 'такая рубрика уже существует.'
+				)
 		    	),
+				
 		    
-    		'title' => array( 
+    	'title' => array( 
         		'rule' => 'notEmpty',
         		'message' => 'Поле не должно быть пустым'
     			)
-    			)   			
     			);
 }
