@@ -61,7 +61,7 @@ class AdsController extends AppController {
 			}
 		}
 		$all_rubriks = $this->Ad->Rubrik->find('list');
-		$all_users = $this->Ad->User->find('list', array('id', 'login'));
+		$all_users = $this->Ad->User->find('list', array('fields' => array('User.id', 'User.login')));		
 		
 		$this->set('all_rubrik',$all_rubriks); 		
 		$this->set('all_user',$all_users);
@@ -88,8 +88,8 @@ class AdsController extends AppController {
 	
 		$all_rubriks = $this->Ad->Rubrik->find('list');
 		$this->set('all_rubrik',$all_rubriks); 
-		$this->loadModel('User');
-		$all_users = $this->User->find('list', array('fields' => array('User.id', 'User.login')));
+		
+		$all_users = $this->Ad->User->find('list', array('fields' => array('User.id', 'User.login')));
 		$this->set('all_user',$all_users);
 	}
 	
@@ -104,6 +104,7 @@ class AdsController extends AppController {
 	} */
 	
 	public function gate_delete($id=null) {
+		
 		if (!$id){
 			$this->Session->setFlash(__('Invalid id', true));
 			$this->redirect(array('actions'=>'index'));

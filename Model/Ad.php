@@ -6,45 +6,41 @@ class Ad extends AppModel {
 
 	public $name = 'Ad';
 	
-	public  $validate = array(
-		    
-    		'Text' => array( 
+	public  $validate = array(		    
+    		'text' => array( 
         		'rule' => 'notEmpty',
-        		'message' => '���� �� ������ ���� ������'
+        		'message' => 'Текст не може буди пустим'
     			),
-			'Date' => array(
+			'date' => array(
 				'rule' => 'date',
-				'message' => '������� ���� � ������� YY-MM-DD.',
+				'message' => 'dd-mm-YY.',
 				'allowEmpty' => true
 			)
-			   			
-			);
+	);
 	
 	public $belongsTo = array(
+		'User' => array(				// У нас є зв*язок в моделі User має багато оголошень, це зв*язок дає нам доступ в зворотньому напрямку.
+			'className' => 'User',
+		),	
 		'Rubrik' => array(
 			'className' => 'Rubrik',			
 		),
 		'Region' => array(
 			'className' => 'Region',
 		),
-		/*
-		'DetailsAuto' => array(
-			'className' => 'DetailsAuto',
-			
-		),
-		'DetailsImmovable' => array(
-			'className' => 'DetailsImmovable',
-		),*/
+	);
+	
+	public $hasOne = array(
+		
 	);
 	
 	public $hasMany = array(
-		/* 'User'=> array(
-			'className' => 'User',
-		), */
 		'details_auto' => array(
 			'className' => 'details_auto',
 			
 		),'details_immovable' => array(
 			'className' => 'details_immovable',
 	));
+	
+	
 }
