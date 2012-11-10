@@ -4,6 +4,12 @@ App::uses('AppController', 'Controller');
 
 class AdsController extends AppController {
 
+	public $paginate = array(
+        'limit' => 30,
+        'order' => array(
+	 		'Ad.id' => 'asc',
+	        )
+	    );
 
 	public function beforeRender () {
 		parent::beforeRender();
@@ -24,11 +30,14 @@ class AdsController extends AppController {
 
 	
 	public function gate_index () {
-		$last_ads = $this->Ad->find('all', array(
+		/*$last_ads = $this->Ad->find('all', array(
 //			'fields'	=> array(),
 			'order'	=> 'Ad.date DESC',
 			'limit' => 30,
-		));
+		));*/
+		
+		$last_ads = $this->paginate();
+		
 		
 		$this->set(compact('last_ads'));
 	}

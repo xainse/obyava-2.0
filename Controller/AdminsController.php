@@ -3,6 +3,7 @@
 App::uses('security', 'utility');
 
 class AdminsController extends AppController {
+	
 	public $name='Admins';
 	
 	public $components= array ('Email');
