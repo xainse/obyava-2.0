@@ -61,8 +61,9 @@ class AdsController extends AppController {
 			}
 		}
 		$all_rubriks = $this->Ad->Rubrik->find('list');
-		$this->set('all_rubrik',$all_rubriks); 
-		$all_users = $this->Ad->User->find('list', array('id'=>'id', 'name'=>'login'));
+		$all_users = $this->Ad->User->find('list', array('id', 'login'));
+		
+		$this->set('all_rubrik',$all_rubriks); 		
 		$this->set('all_user',$all_users);
 		$this->render('gate_edit');
 		
@@ -84,29 +85,24 @@ class AdsController extends AppController {
 		if (empty($this->data)){
 			$this->data =$this->Ad->read(null, $id);
 		}
-	/* $this->_renderEdit('edit'); 
-	$this->set('ad1', $this->Ad->read(null, $rubrik_id));*/
-	/* $this->Ad->Rubrik->find('all'); */
-	/* $this->loadModel('Rubrik');
-	$all_rubriks = $this->Rubrik->find('list');  */
 	
-	/**/
-	$all_rubriks = $this->Ad->Rubrik->find('list');
-	$this->set('all_rubrik',$all_rubriks); 
-	 $this->loadModel('User');
-	$all_users = $this->User->find('list'); 
-	 /*$all_users = $this->User->find('list', array('id'=>'id', 'name'=>'login')); /**/  
-	/* $all_users = $this->Ad->User->find('list', array('id'=>'id', 'name'=>'login' ));*/
-	$this->set('all_user',$all_users);
+		$all_rubriks = $this->Ad->Rubrik->find('list');
+		$this->set('all_rubrik',$all_rubriks); 
+		$this->loadModel('User');
+		$all_users = $this->User->find('list', array('fields' => array('User.id', 'User.login')));
+		$this->set('all_user',$all_users);
 	}
-	 /*function renderEdit($action = 'gate_edit') {
+	
+	 /*
+	function renderEdit($action = 'gate_edit') {
 		$all_users = $this->Ad->User->find('list');
 		$this->set('all_user',$all_users);
 		/* $this->set('rubrik_ids', $this->Rubrik->rubrik_ids);
 		
 		$this->layout = "admin_layout"; *
 		$this->render('gate_edit');
-	}   */
+	} */
+	
 	public function gate_delete($id=null) {
 		if (!$id){
 			$this->Session->setFlash(__('Invalid id', true));
