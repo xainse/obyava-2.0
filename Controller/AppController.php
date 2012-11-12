@@ -43,6 +43,10 @@ class AppController extends Controller {
 	
 	private $users_controllers	= array('nabors', 'admins', 'links', 'checkers');
 	
+	private $months	= array('січень', 'лютий', 'березень', 'квітень', 'травень','червень','липень', 'серпень', 'вересень', 'жовтень', 'листопад', 'грудень',);
+	private $months2= array('січня', 'лютого', 'березеня', 'квітня', 'травня','червня','липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня',);
+	
+	
 	public static $cronLogType = 'cron';
 	
 	public $components = array(
@@ -68,7 +72,9 @@ class AppController extends Controller {
 	
 	public function beforeFilter(){
 		parent::beforeFilter();
-				
+
+		$this->setAdsCount();
+		
 		$this->set('Auth',$this->Auth->user());
 		
 		if (!empty($this->params['prefix']) && $this->params['prefix'] == 'gate') {
@@ -81,10 +87,21 @@ class AppController extends Controller {
 			$this->layout = 'admin_layout';
 		} else {
 			$this->Auth->allow();
+		}		
+	}
+
+	/**
+	 * Встановити кількість оголошень 
+	 */
+	public function setAdsCount() {
+		if (!$this->Session->check('count_ads')) {
+			$this->loadModel('Ad');
+			$count = $this->Ad->find('count', array('conditions' => array()));
+			$this->Session->write('count_ads', $count);
 		}
-		
+		$this->set('count_ads', $this->Session->read('count_ads'));
+		$this->set('manth', $this->months2[date('m')-1]);
 		
 	}
-	
 }
 	

@@ -8,7 +8,7 @@
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('bootstrap.min', 'obyava-style'));
+		echo $this->Html->css(array('obyava-style'));
 		echo $this->Html->script(array('jquery.1.8.2.min'));
 		
 		echo $this->fetch('meta');
@@ -29,10 +29,12 @@
 
 </head>
 <body>
-	<div id="container" class="page-wrap">
-	<?php //echo $this->element('top-nav')?>
+	<div id="container" class="page-wrap">	
 		<header class="header">
-			
+			<a href="<?php echo $this->webroot?>" class="home-link">
+				<?php echo $this->Html->image('interface/obyava-logo-main.png')?>
+			</a>
+			<?php echo $this->element('top-nav')?>
 		</header>
 		<div id="content">
 
@@ -44,6 +46,6 @@
 			
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>
