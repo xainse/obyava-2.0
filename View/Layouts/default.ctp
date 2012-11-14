@@ -8,13 +8,14 @@
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('obyava-style'));
+		echo $this->Html->css(array('obyava-style', 'font-awesome'));
 		echo $this->Html->script(array('jquery.1.8.2.min'));
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
-		echo $this->fetch('script');
+		echo $this->fetch('script');		
 	?>
+<!--[if IE 7]><link type="text/css" rel="stylesheet" href="<?php echo $this->webroot?>css/font-awesome-ie7.css" /><![endif]-->
 <!--[if lt IE 9]>
    <script>
       document.createElement('header');

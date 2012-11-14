@@ -19,17 +19,3 @@
 	    </div>
 	</div>
 </div>
-
-<div class="menu-filter-wrap">
-<menu class="b_main-category-filter">
-	<li class="li">
-		<a href="#" class="link"><i class="big_icon-immovables"></i>Нерухомість</a>
-	</li>
-	<li class="li auto-category">
-		<a href="#" class="link"><i class="big_icon-auto"></i>Авто-мото</a>
-	</li>
-	<li class="li">
-		<a href="#" class="link"><i class="big_icon-other"></i>Інше</a>
-	</li>
-</menu>
-</div>

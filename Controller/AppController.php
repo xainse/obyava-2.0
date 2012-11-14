@@ -99,6 +99,7 @@ class AppController extends Controller {
 			$count = $this->Ad->find('count', array('conditions' => array()));
 			$this->Session->write('count_ads', $count);
 		}
+		
 		$this->set('count_ads', $this->Session->read('count_ads'));
 		$this->set('manth', $this->months2[date('m')-1]);
 		

@@ -90,7 +90,7 @@ input::-moz-focus-inner {
   border: 0;
 }
 
-/* НАЧИНАЕМ ОФОРМЛЕНИЕ */
+/* РќРђР§Р�РќРђР•Рњ РћР¤РћР РњР›Р•РќР�Р• */
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -114,14 +114,14 @@ a:hover {
 	position: relative;
 	width: 100%;	
 }
-/* главный логотип */
+/* РіР»Р°РІРЅС‹Р№ Р»РѕРіРѕС‚РёРї */
 .header .home-link {
 	position: relative;
 	width: 287px;
 	margin: 30px auto 0;
 	display: block;
 }
-	/* Блок с к-тю оголошень на сайті */
+	/* Р‘Р»РѕРє СЃ Рє-С‚СЋ РѕРіРѕР»РѕС€РµРЅСЊ РЅР° СЃР°Р№С‚С– */
 	.b_count {
 		float: left;
 		margin: 6px 17px 0 0;
@@ -142,7 +142,7 @@ a:hover {
 	margin: 21px auto 0;
 }
 
-/* Пошуковий рядок в хедері сторінки  */
+/* top bar with search   */
 .b_top_search {
 	float: left;
 	display: inline-block;
@@ -166,7 +166,7 @@ a:hover {
 		padding: 0 10px;
 		border: 0;
 		font-size: 12px;
-		color: #72706c;	/* плейсхолдер колор #72706c  /#3b3830 */
+		color: #72706c;	/*  #72706c  /#3b3830 */
 		display: inline-block;
 	}
 	.b_top_search .q-submit {
@@ -177,7 +177,7 @@ a:hover {
 		background: url(../img/interface/btn/btn-search.png) no-repeat 50% #FFF;
 		cursor: pointer;
 	}
-	/* Кнопка "Додати оголошення"  */
+	/* Add ads button */
 	.b_add-ads {
 		float: left;		
 	}
@@ -200,7 +200,7 @@ a:hover {
 	width: 100%;
 	height: 62px;
 }
-/* Меню фильтр с разными категориями */
+/* Панель меню на главной странице с фильтрами объявлений по категориям */
 .menu-filter-wrap {
 	display: block;
 	position: relative;
@@ -237,6 +237,9 @@ a:hover {
 				font-family: 'Myriad Pro', Arial;
 				line-height: 70px;
 			}
+			.b_main-category-filter .li .link:hover .icon {
+				opacity: 0.8;
+			}
 		
 [class^="big_icon-"],
 [class*=" big_icon-"] {
@@ -254,15 +257,53 @@ a:hover {
 [class*=" icon-"]:last-child {
   *margin-left: 0;
 }
+	.big_icon-immovables {
+		background-position: 13px 6px;
+	}
+	.big_icon-auto {
+		width: 87px;
+		background-position: 0 -55px;
+	}
+	.big_icon-other {
+		width: 72px;	
+		background-position: 0 -122px;
+	}
+	.big_icon-organization {
+		height: 50px;
+		width: 73px;
+		background-position: 0 -192px;
+	}
 
-.big_icon-immovables {
-	background-position: 13px 6px;
+.right-menu {
+	float: right;
+	width: 280px;
+	min-height: 470px;
+	margin: 25px 25px 0 0;
+	padding: 10px;	
+	border: 1px solid #dedbd6;
+	border-radius: 15px;
 }
-.big_icon-auto {
-	width: 87px;
-	background-position: 0 -55px;
-}
-.big_icon-other {
-	width: 72px;	
-	background-position: 0 -122px;
+	.right-menu h3.title {
+		float: left;
+		width: 100%;
+		height: 50px;
+		margin-top: 0;
+		line-height: 58px;
+		text-transform: uppercase;
+		font-family: 'Myriad Pro',Arial;
+		font-size: 14px;		
+	}
+	
+/**/
+.b_one-ads {
+	float: left;
+	width: 215px;
+	min-height: 128px;
+	margin: 15px;
+	padding: 7px;
+	background-color: #FFF;
+	border: 1px solid #e9e9e9;
+	-webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
 }
