@@ -15,7 +15,21 @@
 	    </div>
 	    
 	    <div class="b_add-ads">
-	    	<a class="add-btn" href="<?php echo $this->webroot?>ads/add"><i class="icon-plus"></i>Додати оголошення</a>
+	    	<a class="add-btn" href="<?php echo $this->webroot?>ads/add"><span>Додати оголошення</span></a>
 	    </div>
 	</div>
+</div>
+
+<div class="menu-filter-wrap">
+<menu class="b_main-category-filter">
+	<li class="li">
+		<a href="#" class="link"><i class="big_icon-immovables"></i>Нерухомість</a>
+	</li>
+	<li class="li auto-category">
+		<a href="#" class="link"><i class="big_icon-auto"></i>Авто-мото</a>
+	</li>
+	<li class="li">
+		<a href="#" class="link"><i class="big_icon-other"></i>Інше</a>
+	</li>
+</menu>
 </div>
