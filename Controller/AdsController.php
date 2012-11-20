@@ -37,8 +37,7 @@ class AdsController extends AppController {
 		));*/
 		
 		$last_ads = $this->paginate();
-		$this->set(compact('last_ads'));
-		
+		$this->set(compact('last_ads'));		
 	}
 	
 	public function gate_view($id=null) {
@@ -93,16 +92,6 @@ class AdsController extends AppController {
 		$this->set('all_user',$all_users);
 	}
 	
-	 /*
-	function renderEdit($action = 'gate_edit') {
-		$all_users = $this->Ad->User->find('list');
-		$this->set('all_user',$all_users);
-		/* $this->set('rubrik_ids', $this->Rubrik->rubrik_ids);
-		
-		$this->layout = "admin_layout"; *
-		$this->render('gate_edit');
-	} */
-	
 	public function gate_delete($id=null) {
 		
 		if (!$id){
@@ -116,5 +105,6 @@ class AdsController extends AppController {
 		$this->Session->setFlash(__('Account was not deleted', true));
 		$this->redirect(array('action'=>'index'));
 	}
+	
 	
 }
