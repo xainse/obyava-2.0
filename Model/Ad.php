@@ -11,11 +11,11 @@ class Ad extends AppModel {
         		'rule' => 'notEmpty',
         		'message' => 'Текст не може буди пустим'
     			),
-			'date' => array(
+		/* 	'date' => array(
 				'rule' => 'date',
 				'message' => 'dd-mm-YY.',
 				'allowEmpty' => true
-			)
+			) */
 	);
 	
 	public $belongsTo = array(

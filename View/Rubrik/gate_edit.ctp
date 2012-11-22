@@ -11,6 +11,16 @@
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
+
+<script type="text/javascript">
+$(function(){   // Таким чином, ми оголошуємо функцію, яка спрацює після того, як завантажиться вся сторінка
+ 
+       $.get( '/ads/index/, function(server_response) {
+                  alert(server_response);
+       });  // кінець AJAX запит
+}):
+</script>
+
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>

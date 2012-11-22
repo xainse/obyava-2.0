@@ -37,7 +37,8 @@ class AdsController extends AppController {
 		));*/
 		
 		$last_ads = $this->paginate();
-		$this->set(compact('last_ads'));		
+		$this->set(compact('last_ads'));
+		
 	}
 	
 	public function gate_view($id=null) {
@@ -84,13 +85,26 @@ class AdsController extends AppController {
 		if (empty($this->data)){
 			$this->data =$this->Ad->read(null, $id);
 		}
-	
+		 $last_ads = $this->paginate();
+		$this->set(compact('last_ads'));
+		
+		 $this->request->data;
 		$all_rubriks = $this->Ad->Rubrik->find('list');
 		$this->set('all_rubrik',$all_rubriks); 
 		
 		$all_users = $this->Ad->User->find('list', array('fields' => array('User.id', 'User.login')));
 		$this->set('all_user',$all_users);
 	}
+	
+	 /*
+	function renderEdit($action = 'gate_edit') {
+		$all_users = $this->Ad->User->find('list');
+		$this->set('all_user',$all_users);
+		/* $this->set('rubrik_ids', $this->Rubrik->rubrik_ids);
+		
+		$this->layout = "admin_layout"; *
+		$this->render('gate_edit');
+	} */
 	
 	public function gate_delete($id=null) {
 		
