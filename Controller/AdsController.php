@@ -69,26 +69,51 @@ class AdsController extends AppController {
 		
 	}
 	
+	/**
+	 * 
+	 * Редагування оголошень
+	 * @param unknown_type $id
+	 */
 	public function gate_edit($id=null){
 		if (!$id && empty($this->data)){
 			$this->Session->setFlash (sprintf(__('Invalid %s', true)));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)){
-			if ($this->Ad->save($this->data)){
-			$this->Session->setFlash(__('The record been saved',true));
-			$this->redirect(array('action'=>'index'));			
-		} else {
-			$this->Session->setFlash(__('The record count not be saved. Please, try again.',true));
-		}
-		}
-		if (empty($this->data)){
-			$this->data =$this->Ad->read(null, $id);
-		}
-		 $last_ads = $this->paginate();
-		$this->set(compact('last_ads'));
 		
-		 $this->request->data;
+		//we($this->request->data);
+		if (!empty($this->request->data)){
+			
+			if ($this->Ad->save($this->request->data)){				
+				
+				// Перевіряеємо чи є данні промашини
+				if (!empty($this->request->data['DetailsAuto'][0])) {
+					$this->request->data['DetailsAuto'][0]['ad_id'] = $this->Ad->id;
+					
+					if ($this->Ad->DetailsAuto->save($this->request->data['DetailsAuto'][0])){
+						$this->Session->setFlash(__('The DetailsAuto record been saved',true));
+					} else {
+						we($this->Ad->DetailsAuto->validationErrors);
+					}
+				}
+								
+				$this->Session->setFlash(__('The record been saved',true));
+				$this->redirect(array('action'=>'index'));			
+			} else {
+				
+				$this->Session->setFlash(__('The record count not be saved. Please, try again.',true));
+			}
+		}
+		
+		if (empty($this->data)){
+			$this->data = $this->Ad->read(null, $id);
+		}
+		
+		
+		
+		//$last_ads = $this->paginate();
+		//$this->set(compact('last_ads'));
+		
+		//$this->request->data;
 		$all_rubriks = $this->Ad->Rubrik->find('list');
 		$this->set('all_rubrik',$all_rubriks); 
 		

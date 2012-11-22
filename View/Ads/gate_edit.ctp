@@ -1,8 +1,8 @@
 ﻿<div class="admins form">
-<?php  /*we($last_ads)*/;?>
 <?php  echo $this->Form->create('Ad');?>
-<fieldset>
-		<legend><?php printf (__('Edit %s', true), __('Ad', true));?></legend>
+<legend><?php printf (__('Edit %s', true), __('Ad', true));?></legend>
+
+	<div class="b_form_left">		
 	<?php 
 		/* echo $this->Form->input('DetailsAuto.color', array('label'=>'Колір автомобіля''type'=>'select', 'options'=>$last_ads, 'selected'=>@$this->data['Ad']['DetailsAuto']['color'])); */
 		echo $this->Form->input('id');
@@ -10,9 +10,19 @@
 		echo $this->Form->input('text');
 		echo $this->Form->input('date', array('type'=> 'text'));
 		echo $this->Form->input('user_id', array('label'=>'Користувач:', 'type'=>'select', 'options'=>$all_user, 'selected'=>@$this->data['id']['all_user']));
-	
 	?>
-	</fieldset>
+	</div>
+	<div class="b_form_right">
+	<?php if($this->data['DetailsAuto']):?>
+		<?php echo $this->Form->hidden('DetailsAuto.0.id');?>
+		<?php echo $this->Form->input('DetailsAuto.0.color', array('label'=>'Колір:'))?>
+		<?php echo $this->Form->input('DetailsAuto.0.fuel_type', array('label'=>'Тип топлива:', 'options'=>array('бензин'=>'Бензин', 'дизель'=>'Дизель', 'газ'=>'Газ'), 'empty' => '-виберіть тип двигуна-'))?>
+		<?php echo $this->Form->input('DetailsAuto.0.gearbox_type', array('label'=>'Коробка передач:', 'options'=>array('ручна'=>'Ручна', 'автомат'=>'Автомат'), 'empty'=>'-виберіть тип коробки передач-'))?>
+		<?php echo $this->Form->input('DetailsAuto.0.drive_to', array('label'=>'Тип приводу:'))?>
+	<?php endif;?>
+	</div>
+	
+	
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
 <div class="actions">
