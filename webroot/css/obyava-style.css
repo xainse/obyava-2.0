@@ -294,11 +294,15 @@ a:hover {
 		font-size: 14px;		
 	}
 	
+.column {
+	float: left;
+	min-height: 1000px;
+	width: 254px;}
 /*	stayle for one ad on frontend */
 .b_one-ads {
 	float: left;
 	width: 215px;
-	min-height: 170px;
+	/*min-height: 170px;*/
 	margin: 10px;
 	padding: 7px;
 	background-color: #FFF;

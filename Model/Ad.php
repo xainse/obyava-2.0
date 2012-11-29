@@ -48,7 +48,7 @@ class Ad extends AppModel {
 		if (!empty($res[0]['Ad'])) {
 			foreach ($res as $key => $i) {
 				$res[$key]['Ad']['date'] = date('d.m.Y', strtotime($i['Ad']['date']));
-				$res[$key]['Ad']['text'] = substr($res[$key]['Ad']['text'], 0, 140);
+				//$res[$key]['Ad']['text'] = substr($res[$key]['Ad']['text'], 0, 140);
 				
 			}
 		}

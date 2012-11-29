@@ -17,11 +17,16 @@
 	<h3 class="title"><i class="icon big_icon-organization"></i>Каталог Організцій</h3>
 </div>
 
-
-	<?php foreach ($last_ads as $item):?>
-	<?php echo $this->element('ads/one-ad', array('i' => $item));?>
-	<?php endforeach;?>
-
+<div style="float: left; width: 80%;">
+	<div class="column">
+	<?php $i = 0; 
+		foreach ($last_ads as $key => $item):
+		$i++;
+		if ($i >= 10) { $i=0; echo '</div> <div class="column">'; }
+		echo $this->element('ads/one-ad', array('i' => $item));
+	endforeach;?>
+	</div>
+</div>
 	<?php /*
 	<div class="b_one-ads">
 		<h4 class="category">Продам квартирку</h4>
