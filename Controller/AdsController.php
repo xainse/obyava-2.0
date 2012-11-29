@@ -18,14 +18,18 @@ class AdsController extends AppController {
 
 	}
 	
-	public function index () {		
-		$last_ads = $this->Ad->find('all', array(
+	public function index () {
+		$this->paginate = array(
 			'order'	=> 'Ad.date DESC',
 			'limit' => 80,
-		));
+			'recursive' => 0,
+			'containe' => array('Ad', 'User', 'Rubrik'),
+		);
+		
+		$last_ads = $this->paginate();
 		
 		$this->set(compact('last_ads'));
-		$this->set(compact('ads'));
+		//$this->set(compact('ads'));
 	}
 
 	
