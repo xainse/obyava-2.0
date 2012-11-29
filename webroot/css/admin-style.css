@@ -32,3 +32,16 @@ body {
     padding: 0 14px;
     text-decoration: none;
 }
+
+
+/* стилі для форми оголошень в адмінці */
+
+.form {
+	float: left;
+	width: 100%;
+}
+
+.form .b_form_left, .form  .b_form_right {
+	float: left;
+	width: 300px;
+}

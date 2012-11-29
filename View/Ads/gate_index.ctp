@@ -1,4 +1,5 @@
 <div class="admins index">
+	<?php /*we($last_ads) */;?>
 	<h2><?php echo __('Оголошення');?></h2>	
 	<div class="nav">
 	<a href="/gate/ads/add" class="btn"><i class="icon-plus"></i><?php echo __('Нове Оголошення')?></a>
@@ -8,6 +9,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('rubrik_id');?></th>
+			<th><?php echo $this->Paginator->sort('rubrik_name');?></th>
 			<th><?php echo $this->Paginator->sort('text');?></th>
 			<th><?php echo $this->Paginator->sort('user_id');?></th>
 			<th><?php echo $this->Paginator->sort('date');?></th>
@@ -24,6 +26,7 @@
 	<tr<?php echo $class;?>>
 		<td><?php echo $one_ad['Ad']['id']; ?>&nbsp;</td>
 		<td><?php echo $one_ad['Ad']['rubrik_id']; ?>&nbsp;</td>
+		<td><?php echo $one_ad['Rubrik']['name']; ?>&nbsp;</td>
 		<td><?php echo $one_ad['Ad']['text']; ?>&nbsp;</td>
 		<td><?php echo $one_ad['Ad']['user_id']; ?>&nbsp;</td>
 		<td><?php echo $one_ad['Ad']['date']; ?>&nbsp;</td>

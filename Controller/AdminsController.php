@@ -14,6 +14,7 @@ class AdminsController extends AppController {
 	 		'Admin.id' => 'asc',
 	        )
 	    );
+	
 	public function beforeRender () {
 		parent::beforeRender();
 		
@@ -49,23 +50,33 @@ class AdminsController extends AppController {
 		$this->render('gate_edit');
 	}
 	
+	/**
+	 * Редагування оголошень
+	 * @param unknown_type $id
+	 */
 	public function gate_edit($id=null){
+		
 		if (!$id && empty($this->data)){
 			$this->Session->setFlash (sprintf(__('Invalid %s', true)));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)){
+		
+		if (!empty($this->request->data)){
+			
 			if ($this->Admin->save($this->data)){
-			$this->Session->setFlash(__('The record been saved',true));
-			$this->redirect(array('action'=>'index'));			
-		} else {
-			$this->Session->setFlash(__('The record count not be saved. Please, try again.',true));
+				$this->Session->setFlash(__('The record been saved',true));
+				$this->redirect(array('action'=>'index'));			
+			} else {
+				$this->Session->setFlash(__('The record count not be saved. Please, try again.',true));
+			}
 		}
-		}
+		
 		if (empty($this->data)){
-			$this->data =$this->Admin->read(null, $id);
+			$this->data = $this->Admin->read(null, $id);
 		}
 	}
+	
+	
 	public function gate_delete($id=null) {
 		if (!$id){
 			$this->Session->setFlash(__('Invalid id', true));
@@ -78,6 +89,8 @@ class AdminsController extends AppController {
 		$this->Session->setFlash(__('Account was not deleted', true));
 		$this->redirect(array('action'=>'index'));
 	}
+	
+	
 	public function login () {
 		if ($this->Auth->login() && $this->isAuthorized()){
 		$this->redirect($this->Auth->loginRedirect);
@@ -95,7 +108,8 @@ class AdminsController extends AppController {
 
 	
 	public function logout () {
-		$this->Session->delete('Admin');
+		$this->Auth->logout();
+		//$this->Session->delete('Admin');
 		$this->redirect(array('action'=>'login'));
 	}
 	

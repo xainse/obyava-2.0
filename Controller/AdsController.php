@@ -18,14 +18,18 @@ class AdsController extends AppController {
 
 	}
 	
-	public function index () {		
-		$last_ads = $this->Ad->find('all', array(
+	public function index () {
+		$this->paginate = array(
 			'order'	=> 'Ad.date DESC',
 			'limit' => 80,
-		));
+			'recursive' => 0,
+			'containe' => array('Ad', 'User', 'Rubrik'),
+		);
+		
+		$last_ads = $this->paginate();
 		
 		$this->set(compact('last_ads'));
-		$this->set(compact('ads'));
+		//$this->set(compact('ads'));
 	}
 
 	
@@ -69,23 +73,62 @@ class AdsController extends AppController {
 		
 	}
 	
+	/**
+	 * 
+	 * Редагування оголошень
+	 * @param unknown_type $id
+	 */
 	public function gate_edit($id=null){
 		if (!$id && empty($this->data)){
 			$this->Session->setFlash (sprintf(__('Invalid %s', true)));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)){
-			if ($this->Ad->save($this->data)){
-			$this->Session->setFlash(__('The record been saved',true));
-			$this->redirect(array('action'=>'index'));			
-		} else {
-			$this->Session->setFlash(__('The record count not be saved. Please, try again.',true));
+		
+		//we($this->request->data);
+		if (!empty($this->request->data)){
+			
+			if ($this->Ad->save($this->request->data)){				
+				
+				//перевіряємо чи є данні про нерухомість
+				if (!empty($this->request->data['DetailsImmovable'][0])) {
+					$this->request->data['DetailsImmovable'][0]['ad_id'] = $this->Ad->id;
+					
+					if ($this->Ad->DetailsImmovable->save($this->request->data['DetailsImmovable'][0])){
+						$this->Session->setFlash(__('The DetailsAuto record been saved',true));
+					} /* else {
+						we($this->Ad->DetailsImmovable->validationErrors);
+					} */
+				}
+				// Перевіряеємо чи є данні про машини
+				if (!empty($this->request->data['DetailsAuto'][0])) {
+					$this->request->data['DetailsAuto'][0]['ad_id'] = $this->Ad->id;
+					
+					if ($this->Ad->DetailsAuto->save($this->request->data['DetailsAuto'][0])){
+						$this->Session->setFlash(__('The DetailsAuto record been saved',true));
+					} /* else {
+						we($this->Ad->DetailsAuto->validationErrors);
+					} */
+				}
+				
+								
+				$this->Session->setFlash(__('The record been saved',true));
+				$this->redirect(array('action'=>'index'));			
+			} else {
+				
+				$this->Session->setFlash(__('The record count not be saved. Please, try again.',true));
+			}
 		}
-		}
+		
 		if (empty($this->data)){
-			$this->data =$this->Ad->read(null, $id);
+			$this->data = $this->Ad->read(null, $id);
 		}
-	
+		
+		
+		
+		//$last_ads = $this->paginate();
+		//$this->set(compact('last_ads'));
+		
+		//$this->request->data;
 		$all_rubriks = $this->Ad->Rubrik->find('list');
 		$this->set('all_rubrik',$all_rubriks); 
 		
@@ -116,5 +159,6 @@ class AdsController extends AppController {
 		$this->Session->setFlash(__('Account was not deleted', true));
 		$this->redirect(array('action'=>'index'));
 	}
+	
 	
 }
