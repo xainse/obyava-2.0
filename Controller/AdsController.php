@@ -38,8 +38,18 @@ class AdsController extends AppController {
 	 * Для яндекс.авто вимоги http://help.yandex.ru/webmaster/?id=1114015
 	 */
 	public function add() {
-	
+		
+		$this->renderEdit();
 	}
+	
+	
+	function renderEdit($action = 'gate_edit') {
+		
+		$rubriks = $this->Ad->Rubrik->rubrik_ids;
+		
+		$this->set(compact('rubriks'));
+		$this->render('edit');
+	} 
 	
 	
 /* * * * * * * * * 	ADMIN ACTIONS * * * * * * * * * * */
@@ -146,16 +156,6 @@ class AdsController extends AppController {
 		$all_users = $this->Ad->User->find('list', array('fields' => array('User.id', 'User.login')));
 		$this->set('all_user',$all_users);
 	}
-	
-	 /*
-	function renderEdit($action = 'gate_edit') {
-		$all_users = $this->Ad->User->find('list');
-		$this->set('all_user',$all_users);
-		/* $this->set('rubrik_ids', $this->Rubrik->rubrik_ids);
-		
-		$this->layout = "admin_layout"; *
-		$this->render('gate_edit');
-	} */
 	
 	public function gate_delete($id=null) {
 		

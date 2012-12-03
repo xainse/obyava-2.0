@@ -50,9 +50,28 @@ class Ad extends AppModel {
 				$res[$key]['Ad']['date'] = date('d.m.Y', strtotime($i['Ad']['date']));
 				//$res[$key]['Ad']['text'] = substr($res[$key]['Ad']['text'], 0, 140);
 				
+				if (empty($res[$key]['Ad']['short_text'])) {
+					$res[$key]['Ad']['short_text'] = $this->getShortText($res[$key]['Ad']['text']);
+					$res[$key]['Ad']['short_text_len'] = strlen($res[$key]['Ad']['short_text']);
+				}
 			}
 		}
-
 		return $res;
+	}
+	
+	/**
+	 * Получить короткий текст, который будет выводится
+	 * в страницах списка
+	 * @param str $text - полный текст объявления
+	 */
+	private function getShortText ($text) {
+		$short_ad_len = 250;
+		
+		if (strlen($text) > $short_ad_len+20) {
+			$pos = strpos(substr($text,$short_ad_len), ' ');			
+			$text = substr($text, 0, $short_ad_len+$pos) . '...';
+		} 
+		
+		return $text;
 	}
 }

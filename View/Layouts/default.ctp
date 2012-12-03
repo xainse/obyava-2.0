@@ -9,7 +9,7 @@
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css(array('obyava-style', 'font-awesome'));
-		echo $this->Html->script(array('jquery.1.8.2.min'));
+		echo $this->Html->script(array('jquery.1.8.2.min', 'piboard'));
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
