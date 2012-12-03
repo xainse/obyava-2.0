@@ -32,6 +32,17 @@ class AdsController extends AppController {
 		//$this->set(compact('ads'));
 	}
 
+	/**
+	 * Додавання оголошення на сайті користувачами
+	 * Для яндекса треба багато данних http://help.yandex.ru/webmaster/?id=1113400
+	 * Для яндекс.авто вимоги http://help.yandex.ru/webmaster/?id=1114015
+	 */
+	public function add() {
+	
+	}
+	
+	
+/* * * * * * * * * 	ADMIN ACTIONS * * * * * * * * * * */
 	
 	public function gate_index () {
 		/*$last_ads = $this->Ad->find('all', array(
