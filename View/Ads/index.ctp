@@ -20,6 +20,9 @@
 <div class="index-das-wrap" id="content">
 	<?php //$i = 0; 
 	foreach ($last_ads as $key => $item):
+		if ($key == 3) {
+			echo $this->element('ads/category-block');
+		}
 		echo $this->element('ads/one-ad', array('i' => $item));
 	endforeach;
 	?>

@@ -276,12 +276,14 @@ a:hover {
 
 .right-menu {
 	float: right;
-	width: 250px;
-	min-height: 470px;
-	margin: 25px 25px 0 0;
-	padding: 10px;	
+	width: 460px;
+	min-height: 250px;	
+	margin: 10px;
+	padding: 7px;	
 	border: 1px solid #dedbd6;
-	border-radius: 15px;
+	-webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;	
 }
 	.right-menu h3.title {
 		float: left;
@@ -302,7 +304,6 @@ a:hover {
 .b_one-ads {
 	float: left;
 	width: 215px;
-	/*min-height: 170px;*/
 	margin: 10px;
 	padding: 7px;
 	background-color: #FFF;
@@ -310,6 +311,7 @@ a:hover {
 	-webkit-border-radius: 6px;
        -moz-border-radius: 6px;
             border-radius: 6px;
+    font-size: 13px;
 }
 	.b_one-ads .category {
 		text-transform: uppercase;
