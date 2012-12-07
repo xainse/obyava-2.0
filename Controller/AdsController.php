@@ -85,16 +85,27 @@ class AdsController extends AppController {
 			
 			if ($this->Ad->save($this->request->data)){				
 				
-				// Перевіряеємо чи є данні промашини
+				//перевіряємо чи є данні про нерухомість
+				if (!empty($this->request->data['DetailsImmovable'][0])) {
+					$this->request->data['DetailsImmovable'][0]['ad_id'] = $this->Ad->id;
+					
+					if ($this->Ad->DetailsImmovable->save($this->request->data['DetailsImmovable'][0])){
+						$this->Session->setFlash(__('The DetailsAuto record been saved',true));
+					} /* else {
+						we($this->Ad->DetailsImmovable->validationErrors);
+					} */
+				}
+				// Перевіряеємо чи є данні про машини
 				if (!empty($this->request->data['DetailsAuto'][0])) {
 					$this->request->data['DetailsAuto'][0]['ad_id'] = $this->Ad->id;
 					
 					if ($this->Ad->DetailsAuto->save($this->request->data['DetailsAuto'][0])){
 						$this->Session->setFlash(__('The DetailsAuto record been saved',true));
-					} else {
+					} /* else {
 						we($this->Ad->DetailsAuto->validationErrors);
-					}
+					} */
 				}
+				
 								
 				$this->Session->setFlash(__('The record been saved',true));
 				$this->redirect(array('action'=>'index'));			

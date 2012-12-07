@@ -22,6 +22,22 @@
 	<?php endif;?>
 	</div>
 	
+	<div class="b_form_right">
+	<?php// if($this->data['DetailsImmovables']):
+	
+	?>
+	
+	
+		<?php echo $this->Form->hidden('DetailsImmovables.0.id');?>
+		<?php echo $this->Form->input('DetailsImmovables.0.immovables_type', array('label'=>'тип жила:', 'options'=>array('будинок'=>'Будинок', 'дача'=>'Дача', 'квартира'=>'Квартира'), 'empty' => '-виберіть тип житла-'))?>
+		<?php echo $this->Form->input('DetailsImmovables.0.rooms_numbers', array('label'=>'Кількість кімнат:', 'options'=>array('1'=>'1', '2'=>'2', '3'=>'3'), 'empty' => '-виберіть кількість кімнат-'))?>
+		<?php echo $this->Form->input('DetailsImmovables.0.area', array('label'=>'Розмір житла(кв.м.):'))?>
+		<?php echo $this->Form->input('DetailsImmovables.0.floor', array('label'=>'Поверх:'))?>
+		<?php echo $this->Form->input('DetailsImmovables.0.floorr_numbers ', array('label'=>'Кількість поверхів:'))?>
+	<?php // endif ;
+	?>
+	</div>
+	
 	
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
