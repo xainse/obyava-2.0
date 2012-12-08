@@ -9,6 +9,9 @@
 	<li class="li">
 		<a href="#" class="link"><i class="icon big_icon-other"></i>Інше</a>
 	</li>
+	<li class="li li-count-wrap">
+		<div class="selected_ads_count" id="selected_ads_count">3 <i class="selected_ads_count-tail"></i></div>
+	</li>
 </menu>
 </div>
 

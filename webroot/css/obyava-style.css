@@ -316,7 +316,10 @@ a:hover {
 	.b_one-ads .category {
 		text-transform: uppercase;
 		font-weight: normal;
-		margin:0;
+		height: 29px;
+		line-height: 26px;
+		margin:0 0 -10px -15px;
+		padding: 0 0 0 19px;
 		font-family: 'Myriad Pro',Arial;
 		font-size: 12px;
 	}
@@ -355,6 +358,38 @@ a:hover {
 	.soc-share > .li i {opacity: 0.5;}
 	.soc-share > .li a:hover i {opacity: 0.9;} 
 	.soc-share > .eye-count {padding-right: 5px;}
+
+/*	STYLE SELECTED ADS */
+.b_one-ads.selected {
+	border: 1px solid #999;
+}
+	.b_one-ads.selected .category {
+		background: url(../img/interface/btn/obyava-sprite.png) no-repeat 0 -241px;
+		color: #FFF;
+	}
+	
+/* COUNT SELECTED ADS */
+.li.li-count-wrap {
+	width: auto;
+	padding: 0;
+}
+.selected_ads_count {
+	float: left;
+	line-height: 26px;
+	height: 30px;
+	margin: 16px 0 0 ;
+	padding: 0 8px 0 29px;
+	color: #FFF;
+	position: relative;
+	background: url(../img/interface/btn/obyava-sprite.png) no-repeat 0 -300px;
+}
+	.selected_ads_count .selected_ads_count-tail {
+		position: absolute;
+		width: 14px;
+		height: 29px;
+		right: -14px;
+		background: url(../img/interface/btn/obyava-sprite.png) no-repeat right -300px;
+	}
 	
 [class^="sml_icon-"],
 [class*=" sml_icon-"] {

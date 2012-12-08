@@ -27,7 +27,7 @@ class AdsController extends AppController {
 	public function index () {
 		$this->paginate = array(
 			'order'	=> 'Ad.date DESC',
-			'limit' => 80,
+			'limit' => 30,
 			'recursive' => 0,
 			'containe' => array('Ad', 'User', 'Rubrik'),
 		);

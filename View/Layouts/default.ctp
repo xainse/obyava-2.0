@@ -37,15 +37,27 @@
 			</a>
 			<?php echo $this->element('top-nav')?>
 		</header>
-		<div id="content">
+		<div id="content_">
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
-			
+			<ul>
+				<li>Счетчики</li>
+				<li><?php echo $this->Html->link('Designed by Maximuz', '#maximus')?></li>
+				<li><?php echo $this->Html->link('Умови використання', '#terms-of-use')?></li>
+			</ul>
 		</div>
 	</div>
 	<?php //echo $this->element('sql_dump'); ?>
+	
+<!-- Scripts init -->
+<script type="text/javascript">
+$(function(){
+	Ad.setup();
+});
+</script>
+	
 </body>
 </html>
