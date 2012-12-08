@@ -9,7 +9,7 @@
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css(array('obyava-style', 'font-awesome'));
-		echo $this->Html->script(array('jquery.1.8.2.min', 'piboard'));
+		echo $this->Html->script(array('jquery.1.8.2.min', 'adsboard', 'obyava.ai'));
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -38,7 +38,6 @@
 			<?php echo $this->element('top-nav')?>
 		</header>
 		<div id="content">
-
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>

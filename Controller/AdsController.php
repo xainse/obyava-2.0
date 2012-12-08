@@ -15,7 +15,13 @@ class AdsController extends AppController {
 		parent::beforeRender();
 		
 		//$this->layout = 'admin_layout';
-
+	}
+	
+	/**
+	 * Сохраняем в сесию объявления которые выбирает пользователь 
+	 */
+	public function save_seleced_ads () {
+	
 	}
 	
 	public function index () {
