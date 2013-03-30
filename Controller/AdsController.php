@@ -15,13 +15,19 @@ class AdsController extends AppController {
 		parent::beforeRender();
 		
 		//$this->layout = 'admin_layout';
-
+	}
+	
+	/**
+	 * Сохраняем в сесию объявления которые выбирает пользователь 
+	 */
+	public function save_seleced_ads () {
+	
 	}
 	
 	public function index () {
 		$this->paginate = array(
 			'order'	=> 'Ad.date DESC',
-			'limit' => 80,
+			'limit' => 30,
 			'recursive' => 0,
 			'containe' => array('Ad', 'User', 'Rubrik'),
 		);

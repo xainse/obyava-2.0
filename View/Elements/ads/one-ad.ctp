@@ -1,6 +1,7 @@
 <?php if (!empty($i)):?>
+
 <div class="b_one-ads post">
-	<h4 class="category"><?php echo $i['Rubrik']['name']?></h4>
+	<h4 class="category"><?php echo $i['Rubrik']['title2']?></h4>
 	<p class="b_one-ads_ads-text"><?php echo $i['Ad']['short_text']?></p>	
 	<ul class="b_one-ads_det">
 		<li class="li"><a class="link hasImages" href="#"><i class="sml_icon sml_icon-img"></i></a></li>

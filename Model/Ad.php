@@ -48,11 +48,16 @@ class Ad extends AppModel {
 		if (!empty($res[0]['Ad'])) {
 			foreach ($res as $key => $i) {
 				$res[$key]['Ad']['date'] = date('d.m.Y', strtotime($i['Ad']['date']));
-				//$res[$key]['Ad']['text'] = substr($res[$key]['Ad']['text'], 0, 140);
 				
 				if (empty($res[$key]['Ad']['short_text'])) {
 					$res[$key]['Ad']['short_text'] = $this->getShortText($res[$key]['Ad']['text']);
 					$res[$key]['Ad']['short_text_len'] = strlen($res[$key]['Ad']['short_text']);
+				}
+				
+				switch ($i['Ad']['subrubrik_id']) {
+					case 'sell': $res[$key]['Rubrik']['title2'] = 'Продам '.$i['Rubrik']['name']; break;
+					case 'bay': $res[$key]['Rubrik']['title2'] = 'Куплю '.$i['Rubrik']['name']; break;
+					case 'chenge': $res[$key]['Rubrik']['title2'] = 'Обменяю '.$i['Rubrik']['name']; break; 
 				}
 			}
 		}
