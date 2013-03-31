@@ -90,7 +90,7 @@ input::-moz-focus-inner {
   border: 0;
 }
 
-/* РќРђР§Р�РќРђР•Рњ РћР¤РћР РњР›Р•РќР�Р• */
+/* BODY COMMON */
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -114,14 +114,14 @@ a:hover {
 	position: relative;
 	width: 100%;	
 }
-/* РіР»Р°РІРЅС‹Р№ Р»РѕРіРѕС‚РёРї */
+/* Заголовок */
 .header .home-link {
 	position: relative;
 	width: 287px;
 	margin: 30px auto 0;
 	display: block;
 }
-	/* Р‘Р»РѕРє СЃ Рє-С‚СЋ РѕРіРѕР»РѕС€РµРЅСЊ РЅР° СЃР°Р№С‚С– */
+	/* Счетчик количества объявлений */
 	.b_count {
 		float: left;
 		margin: 6px 17px 0 0;
@@ -253,8 +253,8 @@ a:hover {
   background-repeat: no-repeat;
 }
 
-[class^="icon-"]:last-child,
-[class*=" icon-"]:last-child {
+[class^="big_icon-"]:last-child,
+[class*=" big_icon-"]:last-child {
   *margin-left: 0;
 }
 	.big_icon-immovables {
@@ -276,12 +276,14 @@ a:hover {
 
 .right-menu {
 	float: right;
-	width: 280px;
-	min-height: 470px;
-	margin: 25px 25px 0 0;
-	padding: 10px;	
+	width: 460px;
+	min-height: 250px;	
+	margin: 10px;
+	padding: 7px;	
 	border: 1px solid #dedbd6;
-	border-radius: 15px;
+	-webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;	
 }
 	.right-menu h3.title {
 		float: left;
@@ -294,16 +296,178 @@ a:hover {
 		font-size: 14px;		
 	}
 	
-/**/
+.column {
+	float: left;
+	min-height: 1000px;
+	width: 254px;}
+/*	stayle for one ad on frontend */
 .b_one-ads {
 	float: left;
 	width: 215px;
-	min-height: 128px;
-	margin: 15px;
+	margin: 10px;
 	padding: 7px;
 	background-color: #FFF;
 	border: 1px solid #e9e9e9;
 	-webkit-border-radius: 6px;
        -moz-border-radius: 6px;
             border-radius: 6px;
+    font-size: 13px;
 }
+	.b_one-ads .category {
+		text-transform: uppercase;
+		font-weight: normal;
+		height: 29px;
+		line-height: 26px;
+		margin:0 0 -10px -15px;
+		padding: 0 0 0 19px;
+		font-family: 'Myriad Pro',Arial;
+		font-size: 12px;
+	}
+	.b_one-ads .b_one-ads_ads-text {margin: 4px 0 7px 0;}
+	.b_one-ads .b_one-ads_det, .b_one-ads .b_one-ads_share {
+		display: block;
+		padding: 0;
+		margin: 0;
+		font-size: 12px;		
+	}
+	.b_one-ads_det .li, .b_one-ads_share .li {
+		display: inline-block;
+		padding: 0;
+		margin: 0 0 0 0;
+		list-style: none;
+	}
+	.b_one-ads_det .hasImages {
+	
+	}
+	.b_one-ads_det .hasPhone {
+
+	}
+	.b_one-ads_share .created-time {
+		display: inline-block;
+	}
+	.b_one-ads_share .soc-share {
+		display: inline-block;
+		float: right;
+		margin: 0;
+		padding: 0;		
+	}
+	
+	.b_one-ads .b_one-ads_share {
+		margin: 5px 0 0;
+	}
+	.soc-share > .li i {opacity: 0.5;}
+	.soc-share > .li a:hover i {opacity: 0.9;} 
+	.soc-share > .eye-count {padding-right: 5px;}
+
+/*	STYLE SELECTED ADS */
+.b_one-ads.selected {
+	border: 1px solid #999;
+}
+	.b_one-ads.selected .category {
+		background: url(../img/interface/btn/obyava-sprite.png) no-repeat 0 -241px;
+		color: #FFF;
+	}
+	
+/* COUNT SELECTED ADS */
+.li.li-count-wrap {
+	width: auto;
+	padding: 0;
+}
+.selected_ads_count {
+	float: left;
+	line-height: 26px;
+	height: 30px;
+	margin: 16px 0 0 ;
+	padding: 0 8px 0 29px;
+	color: #FFF;
+	position: relative;
+	background: url(../img/interface/btn/obyava-sprite.png) no-repeat 0 -300px;
+}
+	.selected_ads_count .selected_ads_count-tail {
+		position: absolute;
+		width: 14px;
+		height: 29px;
+		right: -14px;
+		background: url(../img/interface/btn/obyava-sprite.png) no-repeat right -300px;
+	}
+	
+[class^="sml_icon-"],
+[class*=" sml_icon-"] {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  *margin-right: .3em;
+  vertical-align: top;
+  background-image: url("../img/interface/btn/obyava-sprite.png");
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+[class^="sml_icon-"]:last-child,
+[class*=" sml_icon-"]:last-child {
+  *margin-left: 0;
+}
+.sml_icon-img {background-position: -2px -281px;}
+.sml_icon-location {background-position: -20px -281px;}
+.sml_icon-phone {background-position: -38px -281px;}
+.sml_icon-time {background-position: -164px -281px;}
+.sml_icon-tw {background-position: -82px -280px;}
+.sml_icon-vk {background-position: -103px -280px;}
+.sml_icon-fb {background-position: -123px -280px;}
+.sml_icon-eye {background-position: -144px -280px;}
+
+
+
+/*	LIST OF ADS ON INDEX PAGE */
+.index-das-wrap {
+	position: relative;
+	margin: 0 auto;	
+	min-height: 100%;	
+}
+
+
+/*	RESPONSIVE DESIGN SYKA	*/
+@media (max-width: 1000px) {
+	.index-das-wrap {width: 980px; }
+}
+
+@media (max-width: 1920px) {
+	.index-das-wrap {width: 1757px; }	/* одна маленька об*ява в ширину 251рх */
+}
+@media (max-width: 1600px) {
+	.index-das-wrap {width: 1004px; }
+}
+@media (max-width: 1440px) {
+	.index-das-wrap {width: 1004px; }
+}
+@media (max-width: 1336px) {
+	.index-das-wrap {width: 1004px; }
+}
+@media (max-width: 1024px) {
+	.index-das-wrap {width: 753px; }
+}
+@media (max-width: 800px) {
+	.index-das-wrap {width: 502px; }
+}
+@media (max-width: 480px) {
+	.index-das-wrap {width: 251px; }
+}
+/*
+@media (min-width: 1020px) {
+	.right-menu {display: none;} /* TODO: коли розмір монітора зменшується, то меню з підприємствами треба кудись винести */
+}
+*/
+
+/*
+@media (min-width: 768px) and (max-width: 979px) {
+	
+}
+@media (max-width: 480px) {
+
+}
+@media (max-width: 767px) {
+
+}
+@media (min-width: 1200px) {
+	
+}
+*/

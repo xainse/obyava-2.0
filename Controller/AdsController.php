@@ -15,19 +15,50 @@ class AdsController extends AppController {
 		parent::beforeRender();
 		
 		//$this->layout = 'admin_layout';
-
 	}
 	
-	public function index () {		
-		$last_ads = $this->Ad->find('all', array(
+	/**
+	 * Сохраняем в сесию объявления которые выбирает пользователь 
+	 */
+	public function save_seleced_ads () {
+	
+	}
+	
+	public function index () {
+		$this->paginate = array(
 			'order'	=> 'Ad.date DESC',
-			'limit' => 80,
-		));
+			'limit' => 30,
+			'recursive' => 0,
+			'containe' => array('Ad', 'User', 'Rubrik'),
+		);
+		
+		$last_ads = $this->paginate();
 		
 		$this->set(compact('last_ads'));
-		$this->set(compact('ads'));
+		//$this->set(compact('ads'));
 	}
 
+	/**
+	 * Додавання оголошення на сайті користувачами
+	 * Для яндекса треба багато данних http://help.yandex.ru/webmaster/?id=1113400
+	 * Для яндекс.авто вимоги http://help.yandex.ru/webmaster/?id=1114015
+	 */
+	public function add() {
+		
+		$this->renderEdit();
+	}
+	
+	
+	function renderEdit($action = 'gate_edit') {
+		
+		$rubriks = $this->Ad->Rubrik->rubrik_ids;
+		
+		$this->set(compact('rubriks'));
+		$this->render('edit');
+	} 
+	
+	
+/* * * * * * * * * 	ADMIN ACTIONS * * * * * * * * * * */
 	
 	public function gate_index () {
 		/*$last_ads = $this->Ad->find('all', array(
@@ -66,6 +97,23 @@ class AdsController extends AppController {
 		$this->set('all_rubrik',$all_rubriks); 		
 		$this->set('all_user',$all_users);
 		$this->render('gate_edit');
+		
+	}
+	//додавання оголошень "користувачем"
+	public function add_obyava() {
+		if (!empty($this->data)){
+			$this->Ad->create();
+			if ($this->Ad->save($this->data)) {
+				$this->Session->setFlash(__('The record has been saved', true));
+				$this->redirect(array('action'=>'index'));
+			} else {
+			//we($this->Admin);
+			$this->Session->setFlash(__('The record could not be saved. Please, try again.', true));
+			}
+		}
+		$all_rubriks = $this->Ad->Rubrik->find('list');		
+		$this->set('all_rubrik',$all_rubriks); 		
+		
 		
 	}
 	
@@ -131,16 +179,6 @@ class AdsController extends AppController {
 		$all_users = $this->Ad->User->find('list', array('fields' => array('User.id', 'User.login')));
 		$this->set('all_user',$all_users);
 	}
-	
-	 /*
-	function renderEdit($action = 'gate_edit') {
-		$all_users = $this->Ad->User->find('list');
-		$this->set('all_user',$all_users);
-		/* $this->set('rubrik_ids', $this->Rubrik->rubrik_ids);
-		
-		$this->layout = "admin_layout"; *
-		$this->render('gate_edit');
-	} */
 	
 	public function gate_delete($id=null) {
 		

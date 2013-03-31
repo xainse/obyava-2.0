@@ -5,6 +5,7 @@
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('name');
+		echo $this->Form->input('title2', array('label' => 'РђР»СЊС‚РµСЂРЅР°С‚РёРІРЅРµ С–Рј*СЏ РєР°С‚РµРіРѕСЂС–С—, Р·СЂРѕР·СѓРјС–Р»Рµ Р»СЋРґСЏРј:'));
 		echo $this->Form->input('comment');
 		echo $this->Form->input('template');
 	?>
@@ -13,11 +14,10 @@
 </div>
 
 <script type="text/javascript">
-$(function(){   // Таким чином, ми оголошуємо функцію, яка спрацює після того, як завантажиться вся сторінка
- 
+$(function(){    
        $.get( '/ads/index/, function(server_response) {
                   alert(server_response);
-       });  // кінець AJAX запит
+       });  // AJAX 
 }):
 </script>
 

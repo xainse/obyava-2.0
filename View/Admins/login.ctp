@@ -33,14 +33,14 @@ div#centered {margin-top: expression(((document.documentElement.offsetHeight/2)
 <div id="wrapper">
 <?php /* wln($Auth); */?>
 <div id="centered">
-	<?php echo $this->Form->create('Admin', array('action'=>$this->action))?>
+	<?php echo $this->Form->create('Admin', array('action'=>$this->action, 'class' => 'login-form'))?>
 	<?php echo $this->Form->input('login', array('label'=>'Логин:', 'error'=>array('not_correct'=>'Error! Wrong login and/or password. Please try again.')))?>
 	<?php echo $this->Form->input('password', array('label'=>'Пароль:'))?>
 	<?php echo $this->Form->end('Войти')?></div>
 
 </div>
 
-<?php /* echo $this->element('sql_dump') */?>
+<?php //echo $this->element('sql_dump'); ?>
 
 <script type="text/javascript">
 	document.forms[0].elements['AdminLogin'].focus();
