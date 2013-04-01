@@ -99,6 +99,23 @@ class AdsController extends AppController {
 		$this->render('gate_edit');
 		
 	}
+	//додавання оголошень "користувачем"
+	public function add_obyava() {
+		if (!empty($this->data)){
+			$this->Ad->create();
+			if ($this->Ad->save($this->data)) {
+				$this->Session->setFlash(__('The record has been saved', true));
+				$this->redirect(array('action'=>'index'));
+			} else {
+			//we($this->Admin);
+			$this->Session->setFlash(__('The record could not be saved. Please, try again.', true));
+			}
+		}
+		$all_rubriks = $this->Ad->Rubrik->find('list');		
+		$this->set('all_rubrik',$all_rubriks); 		
+		
+		
+	}
 	
 	/**
 	 * 
