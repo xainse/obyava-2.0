@@ -7,16 +7,35 @@ class Ad extends AppModel {
 	public $name = 'Ad';
 	
 	public  $validate = array(		    
-    		'text' => array( 
-        		'rule' => 'notEmpty',
-        		'message' => 'Текст не може буди пустим'
-    			),
-		/* 	'date' => array(
+    		'text' => array(
+    			'rule' => array('
+    				custom', "/^[a-z0-9][a-z0-9.-_!]{3,500}$/i") ,
+                	'allowEmpty' => false,
+                	'message'    => 'Текст обяви може містити букви та цифри a-z,0-9, "-","!", 
+                                     "_" & "." та повинен містити від 20 до 500 символів',
+            ),
+		 	'title' => array(
+				'custom1' => array(
+                	'rule' => array('custom', "/^[a-z0-9][a-z0-9.-_!]{3,130}$/i") ,
+                	'allowEmpty' => false,
+                	'message'    => 'заголовок може містити букви та цифри a-z,0-9, "-", 
+                                     "_" & "." і повинен мати від 3 до 130 символів',
+            ),
+            ),
+    		'tags' => array(
+           		 'rule' => array('custom', "/^[a-z0-9][a-z0-9,]{5,60}$/i") ,
+                	'allowEmpty' => false,
+                	'message'    => 'тег може містити букви та цифри a-z,0-9,  "," і повинен мати від 5 до 60 символів',
+            
+            	
+            ),
+		 	/*'date' => array(
 				'rule' => 'date',
 				'message' => 'dd-mm-YY.',
-				'allowEmpty' => true
+				'allowEmpty' => false,
+            	'message' => 'введите дату, формата д(01)-м(06)-р(13)'
 			) */
-	);
+    			);
 	
 	public $belongsTo = array(
 		'User' => array(				// У нас є зв*язок в моделі User має багато оголошень, це зв*язок дає нам доступ в зворотньому напрямку.
