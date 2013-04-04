@@ -7,34 +7,39 @@ class Ad extends AppModel {
 	public $name = 'Ad';
 	
 	public  $validate = array(		    
-    		'text' => array(
-    			'rule' => array('
-    				custom', "/^[a-z0-9][a-z0-9.-_!]{3,500}$/i") ,
+    		/*'text' => array(
+    			'rule' => array('custom', "/^[a-z0-9][a-z0-9.-_!]{3,500}$/i") ,
                 	'allowEmpty' => false,
                 	'message'    => 'Текст обяви може містити букви та цифри a-z,0-9, "-","!", 
                                      "_" & "." та повинен містити від 20 до 500 символів',
-            ),
+            ),*/
 		 	'title' => array(
-				'custom1' => array(
-                	'rule' => array('custom', "/^[a-z0-9][a-z0-9.-_!]{3,130}$/i") ,
-                	'allowEmpty' => false,
-                	'message'    => 'заголовок може містити букви та цифри a-z,0-9, "-", 
-                                     "_" & "." і повинен мати від 3 до 130 символів',
+				
+                	'numeric' => array(
+                	'rule' => 'alphaNumeric' ,
+					'message' => 'букви та цифри'),
+					'maxmin' => array(
+            		'rule' => array('between', 5, 60),
+                	'message'    => 'заголовок може містити букви та цифри і повинен мати від 3 до 60 символів',
             ),
             ),
-    		'tags' => array(
-           		 'rule' => array('custom', "/^[a-z0-9][a-z0-9,]{5,60}$/i") ,
-                	'allowEmpty' => false,
-                	'message'    => 'тег може містити букви та цифри a-z,0-9,  "," і повинен мати від 5 до 60 символів',
-            
-            	
-            ),
-		 	/*'date' => array(
-				'rule' => 'date',
-				'message' => 'dd-mm-YY.',
+           'tags' => array(
+        'alphanumeric' => array(
+            'rule' => 'alphaNumeric',  
+            'message' => 'Разрешены только буквы и цифры.',
+         ),
+        'minlength' => array(
+            'rule' => array('minLength', '5'),  
+            'message' => 'Минимальная длина - 5 символов.'
+        ),  
+    ),
+    	
+		 	'date' => array(
+				'rule' => array('date','dmy'),
+				'massage' => 'dd-mm-YY',
 				'allowEmpty' => false,
             	'message' => 'введите дату, формата д(01)-м(06)-р(13)'
-			) */
+			) /**/
     			);
 	
 	public $belongsTo = array(
