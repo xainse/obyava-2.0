@@ -23,25 +23,25 @@ class Ad extends AppModel {
                 	'message'    => 'заголовок може містити букви та цифри і повинен мати від 3 до 60 символів',
             ),
             ),*/
-           'tags' => array(
-        'alphad' => array(
-            'rule' => array('custom', '/^[а-яё\s]+$/i'),  
-        'message' => 'только буквы и цифры.' ,
-            
-         ),
-        'minlength' => array(
-            'rule' => array('minLength', '5'),  
-            'message' => 'Минимальная длина - 5 символов.'
-        ),  
-    ),
-    	
+       'tags' => array(
+	        'alphad' => array(	            
+				'rule' => array('custom', "/^[а-я ]{2,18}$/i") ,
+				'allowEmpty' => false,
+	        	'message' => 'только буквы и цифры.' ,
+	            
+	         ),
+	        'minlength' => array(
+	            'rule' => array('minLength', '5'),  
+	            'message' => 'Минимальная длина - 5 символов.'
+	        ),  
+	    ),    	
 		 	'date' => array(
 				'rule' => array('date','dmy'),
 				'massage' => 'dd-mm-YY',
 				'allowEmpty' => false,
             	'message' => 'введите дату, формата д(01)-м(06)-р(13)'
 			) /**/
-    			);
+  	);
 	
 	public $belongsTo = array(
 		'User' => array(				// У нас є зв*язок в моделі User має багато оголошень, це зв*язок дає нам доступ в зворотньому напрямку.

@@ -11,7 +11,7 @@
 		echo $this->Form -> radio('subrubrik_id', array('bay' => 'Продать','chenge' => 'Купить','service' => 'Обменять')); 
 		echo $this->Form->input('text');
 		echo $this->Form->input('tags', array('type'=> 'text'));
-		echo $this->Form->input('date', array('type'=> 'text'));
+		//echo $this->Form->input('date', array('type'=> 'text'));
 		
 	?>
 	</div>	
@@ -25,3 +25,6 @@
 	</ul>
 </div>
 	
+<style>
+.error-message {font-size:12px; color:red;}
+</style>
