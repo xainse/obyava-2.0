@@ -8,11 +8,11 @@ class Ad extends AppModel {
 	
 	public  $validate = array(		    
     		/*'text' => array(
-    			'rule' => array('custom', "/^[a-z0-9][a-z0-9.-_!]{3,500}$/i") ,
+    			'rule' => array('custom', "/^[a-z0-9.-_!]{3,500}$/i") ,
                 	'allowEmpty' => false,
                 	'message'    => 'Текст обяви може містити букви та цифри a-z,0-9, "-","!", 
                                      "_" & "." та повинен містити від 20 до 500 символів',
-            ),*/
+            ),
 		 	'title' => array(
 				
                 	'numeric' => array(
@@ -22,11 +22,12 @@ class Ad extends AppModel {
             		'rule' => array('between', 5, 60),
                 	'message'    => 'заголовок може містити букви та цифри і повинен мати від 3 до 60 символів',
             ),
-            ),
+            ),*/
            'tags' => array(
-        'alphanumeric' => array(
-            'rule' => 'alphaNumeric',  
-            'message' => 'Разрешены только буквы и цифры.',
+        'alphad' => array(
+            'rule' => array('custom', '/^[а-яё\s]+$/i'),  
+        'message' => 'только буквы и цифры.' ,
+            
          ),
         'minlength' => array(
             'rule' => array('minLength', '5'),  
