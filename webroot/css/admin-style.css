@@ -40,6 +40,10 @@ body {
 	float: left;
 	width: 100%;
 }
+.form_right {
+	float: right;
+	width: 100%;
+}
 
 .form .b_form_left, .form  .b_form_right {
 	float: left;
