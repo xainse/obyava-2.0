@@ -45,14 +45,9 @@
 		
 		echo $this->Form ->input('subrubrik_id', array('label'=>'Підрубрика:', 'type'=>'radio', 'options'=>array('bay' => 'Продать','chenge' => 'Купить','service' => 'Обменять'))); 
 		echo $this->Form->input('text');
-<<<<<<< HEAD
+
 		echo $this->Form->input('tags', array('label'=>'Теги:','type'=> 'text'));
-		echo $this->Form->input('date', array('label'=>'Дата:','type'=> 'text'));
-=======
-		echo $this->Form->input('tags', array('type'=> 'text'));
-		//echo $this->Form->input('date', array('type'=> 'text'));
->>>>>>> origin
-		
+		echo $this->Form->input('date', array('label'=>'Дата:','type'=> 'text'));		
 	?>
 	</div>	
 <?php echo $this->Form->end(__('отправить', true));?>

@@ -6,6 +6,8 @@ class Ad extends AppModel {
 
 	public $name = 'Ad';
 	
+	const MAIN_CATEGORY_TAG = 33;
+	
 	public  $validate = array(		    
     		/*'text' => array(
     			'rule' => array('custom', "/^[a-z0-9.-_!]{3,500}$/i") ,
@@ -103,5 +105,35 @@ class Ad extends AppModel {
 		} 
 		
 		return $text;
+	}
+	
+	/**
+	 * Получить Категории объяв
+	 * Которые состоят из тегов
+	 */
+	public function getAdsCategories() {
+		//App::import('Model', 'Tag');
+		//$this->Tag = new Tag;
+		
+		$this->Tag = ClassRegistry::init('Tag');
+		// 33 - это тег, который называется "Категорії об*яв" - и он должен содержать в себе иерархию категорий 
+		$tmp_categories = $this->Tag->getTagsHhierarchy(self::MAIN_CATEGORY_TAG, 1);
+		//we($tmp_categories);
+		$categories = array();		
+		foreach ($tmp_categories['TagConnection'] as $category1) {
+			$categories[$category1['Tag']['id']] = array(
+				'name' => $category1['Tag']['name'],
+				'subCategory' => array(),
+			);			
+			if (!empty($category1['TagConnection'])) {
+				$subc = array();
+				foreach ($category1['TagConnection'] as $category2) {
+					$subc[$category1['Tag']['id'].'-'.$category2['Tag']['id']] = $category2['Tag']['name']; 
+				}
+				$categories[$category1['Tag']['id']]['subCategory'] = $subc;				
+			}			
+		}	
+		
+		return $categories;
 	}
 }

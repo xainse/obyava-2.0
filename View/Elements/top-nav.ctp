@@ -3,7 +3,7 @@
 	
     	<div class="b_count">
 	    	<i class="num1">на <?php echo date('d') .' '.@$manth?>:</i>
-	    	<i class="num2"> <?php echo $count_ads?></i>
+	    	<i class="num2"> <?php echo @$count_ads?></i>
 	    	<i class="num3">Актуальних <span>Оголошень</span></i>
     	</div>
     	

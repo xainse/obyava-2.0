@@ -52,8 +52,9 @@ class AdsController extends AppController {
 	function renderEdit($action = 'gate_edit') {
 		
 		$rubriks = $this->Ad->Rubrik->rubrik_ids;
+		$categories = $this->Ad->getAdsCategories();
 		
-		$this->set(compact('rubriks'));
+		$this->set(compact('categories'));
 		$this->render('edit');
 	} 
 	
