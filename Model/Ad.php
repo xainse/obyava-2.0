@@ -6,7 +6,15 @@ class Ad extends AppModel {
 
 	public $name = 'Ad';
 	
+	/**
+	 * 
+	 * Категорії оголошень побудовані на системі тегів
+	 * Корінний тег для "Категорій оголошень" має номер 33
+	 * - це як точка входу в ланцюг тегів про категорії
+	 * @var int
+	 */
 	const MAIN_CATEGORY_TAG = 33;
+				
 	
 	public  $validate = array(		    
     		/*'text' => array(
@@ -61,6 +69,9 @@ class Ad extends AppModel {
 		
 	);
 	
+	/**
+	 * Связь ко многим
+	 */
 	public $hasMany = array(
 		'DetailsAuto' => array(
 			'className' => 'DetailsAuto',
@@ -69,7 +80,10 @@ class Ad extends AppModel {
 			'className' => 'DetailsImmovable',
 	));
 	
-	
+	/**
+	 * Обработка после нахождения объявлений в базе
+	 * @see Model::afterFind()
+	 */
 	public function afterFind($res, $primery) {
 	
 		if (!empty($res[0]['Ad'])) {
@@ -110,6 +124,7 @@ class Ad extends AppModel {
 	/**
 	 * Получить Категории объяв
 	 * Которые состоят из тегов
+	 * TODO: сделать кеширование этого списка
 	 */
 	public function getAdsCategories() {
 		//App::import('Model', 'Tag');
@@ -117,21 +132,23 @@ class Ad extends AppModel {
 		
 		$this->Tag = ClassRegistry::init('Tag');
 		// 33 - это тег, который называется "Категорії об*яв" - и он должен содержать в себе иерархию категорий 
-		$tmp_categories = $this->Tag->getTagsHhierarchy(self::MAIN_CATEGORY_TAG, 1);
-		//we($tmp_categories);
-		$categories = array();		
+		$tmp_categories = $this->Tag->getTagsHierarchy(self::MAIN_CATEGORY_TAG, 1);
+	
+		$categories = $options = array();		
 		foreach ($tmp_categories['TagConnection'] as $category1) {
-			$categories[$category1['Tag']['id']] = array(
-				'name' => $category1['Tag']['name'],
-				'subCategory' => array(),
-			);			
+
 			if (!empty($category1['TagConnection'])) {
-				$subc = array();
+				$categories[$category1['Tag']['name']] = array(
+					$category1['Tag']['id']	=> $category1['Tag']['name']
+				);
+				
 				foreach ($category1['TagConnection'] as $category2) {
-					$subc[$category1['Tag']['id'].'-'.$category2['Tag']['id']] = $category2['Tag']['name']; 
+					
+					$categories[$category1['Tag']['name']][$category2['Tag']['id']] = $category2['Tag']['name'];
 				}
-				$categories[$category1['Tag']['id']]['subCategory'] = $subc;				
-			}			
+			} else {
+				$categories[$category1['Tag']['id']] = $category1['Tag']['name'];					
+			}		
 		}	
 		
 		return $categories;

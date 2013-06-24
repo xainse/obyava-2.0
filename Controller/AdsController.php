@@ -51,10 +51,10 @@ class AdsController extends AppController {
 	
 	function renderEdit($action = 'gate_edit') {
 		
-		$rubriks = $this->Ad->Rubrik->rubrik_ids;
+		$regions 	= $this->Ad->Region->getAdsRegions();
 		$categories = $this->Ad->getAdsCategories();
 		
-		$this->set(compact('categories'));
+		$this->set(compact('categories', 'regions'));
 		$this->render('edit');
 	} 
 	

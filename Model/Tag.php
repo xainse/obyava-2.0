@@ -20,11 +20,12 @@ class Tag extends AppModel {
 	
 	/**
 	 * Получить иерархию тегов начиная с первого тега 
-	 * level - уровень иерархии
+	 * level - уровень иерархии, начиная с которого нужно выбрать дерево тегов.
 	 * @param (int) $main_tag_id
 	 */
-	public function getTagsHhierarchy($main_tag_id = null, $level = 1) {
+	public function getTagsHierarchy($main_tag_id = null, $level = 1) {
 		$result = array();
+		$level		 = intval($level);
 		$main_tag_id = intval($main_tag_id);	// валидация
 				
 		if ($main_tag_id) {
@@ -35,13 +36,15 @@ class Tag extends AppModel {
 			$level++;
 			
 			$result = $this->find('first', array(		// Находим сам тег и его связи
-				'conditions' => array('Tag.id' => $main_tag_id),
-				'recursive' => 1,				
+				'conditions' => array($this->name . '.id' => $main_tag_id),
+				'recursive' => 1,
 			));
+			
+			$result[$this->name]['level'] = $level-1;
 			
 			if (!empty($result['TagConnection'])) {		//Для связанных тегов, так же рекурсивно находим связанные теги							
 				foreach ($result['TagConnection'] as $key => $sub_tag) {
-					$result['TagConnection'][$key] = $this->getTagsHhierarchy($sub_tag['sub_tag_id'], $level);
+					$result['TagConnection'][$key] = $this->getTagsHierarchy($sub_tag['sub_tag_id'], $level);
 				}
 			} else {
 				unset($result['TagConnection']);
@@ -51,4 +54,15 @@ class Tag extends AppModel {
 		return $result;
 	}
 	
+	/**
+	 * 
+	 * Выбрать цепочку тегов, от текущего тега вверх по иерархии
+	 * @param int $main_tag_id		ID начального тега, от которого мы хотим выбрать цепочку связанных тегов
+	 * @param int $level			
+	 * 
+	 *  Должно быть ограничение по количеству выбираемых тегов
+	 */
+	public function getReversTagsHierarchy($main_tag_id = null, $level = 1) {
+	
+	}
 }
