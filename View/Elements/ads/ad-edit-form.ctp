@@ -1,28 +1,18 @@
-<div class="block-title">
-<div class="ltc"><div class="rtc">
-<div class="block-content">
-Додати об&rsquo;яву</div>
-</div></div></div>
-<div class="block">
-<div class="lbc"><div class="rtc"><div class="rbc">
-	<div class="left">
-		<?php // check for validation error  ?>
-		<?php if (!empty($validationErrors['rubrik_id'])) $error_class_rubrik_id = 'error'; else $error_class_rubrik_id = "";?>
-		<?php if (!empty($validationErrors['text'])) $error_class_text = 'error'; else $error_class_text = "";?>
-		<?php if (!empty($validationErrors['tags'])) $error_class_tags = 'error'; else $error_class_tags = "";?>
-		
-		<?php echo $this->Form->create("Ad", array("action"=>"save/", "class"=>"ads-add"))?>
-		<label id="AdRubrikLabel" for="AdRubrikId">Рубрика:</label>
-		<?php echo $this->Form->select("Ad.rubrik_id", $select_categoria, "first", array("label"=>"Рубрика:", "class"=>$error_class_rubrik_id), false)?>
-		<br />
-		<?php echo $this->Form->radio("Ad.subRubrik_id", array("sell"=>"Продати", "bay"=>"Купити", "change"=>"Обміняти", "service"=>"Послуги"),
-						array("legend"=>" Підрубрика:", "value"=>"sell"))?>
-		
-		<?php echo $this->Form->textarea("Ad.text", array("label"=>"Текст об&rsquo;яви:" , "class"=>$error_class_text))?>
-		<?php echo $this->Form->input("Ad.tags", array("label"=>"Теги:", "class"=>$error_class_tags))?>
-		<?php echo $this->Form->end("Зберегти")?>
-	</div>
-			
+
+<div class="ad-edit-form">
+<div class="left">
+<h3 class="black-bg-title">Додати об*яву</h3>
+<?php echo $this->Form->create('Ad');?>
+<?php echo $this->Form->input('region_id', array('label' => false, 'type'=>'select', 'empty' => '-Виберіть регіон-', 'options' => $regions));?>
+<?php echo $this->Form->input('category_id', array('label' => false, 'type'=>'select', 'empty' => '-Виберіть рубрику-', 'options' => $categories));?>
+<?php echo $this->Form->input('text', array('label' => 'Текст об*яви:', ))?>
+<?php echo $this->Form->input('contacts', array('label' => 'Ваша адреса або телефон:', ))?>
+
+<?php echo $this->Form->input('confirm_rules', array('type'=>'checkbox', 'order' => '', 'label' => $this->Html->link('Погоджуюсь з правилами публікації', $this->webroot.'terms.html'))); ?>
+
+<?php echo $this->Form->button('Зберегти', array('type'=>'submit'))?>
+<?php echo $this->Form->end();?>
+</div>
 	<div class="right ads-add">
 	<?php if(empty($is_error)) :?>
 		<h3>Як правильно написати об&rsquo;яву?</h3>
@@ -42,5 +32,43 @@
 		</div>
 	<?php endif?>	
 	</div>
-</div></div></div>	
 </div>
+
+
+<style type="text/css">
+.ad-edit-form {
+	width: 600px;
+	height: 500px;
+	padding: 20px;
+	position: relative;
+	margin: 0 auto;
+	border: 2px solid #3B3830;
+	border-radius: 5px;
+}
+	.ad-edit-form .left {float: left; width:300px;}
+	.ad-edit-form .right {float: left; width:280px; margin:28px 0 0 20px;}
+.black-bg-title {
+	height: 1em;
+	margin: 0 0 15px;
+	padding: 0;
+	font-size: 31px;	
+	color: #3B3830;
+	text-shadow: 0 1px 1px #FFF;	
+		
+}
+.ad-edit-form .input {
+	float: left;
+	width: 100%;
+	margin:0 0 7px;	
+}
+	.ad-edit-form .input label { float: left; width: 200px; font-size: 13px;}
+	.ad-edit-form .input.checkbox label {width: 240px;}
+	.ad-edit-form .input select, .ad-edit-form .input input[type=text] { float: left; width: 295px; padding: 4px 3px;}
+	textarea#AdText{
+		font-size: 16px;
+		width: 290px;
+		height: 180px;
+		margin: 0 0 10px 0;	
+	}
+		
+</style>

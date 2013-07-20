@@ -29,7 +29,8 @@
 	Router::connect('/', array('controller' => 'ads', 'action' => 'index'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
- */
+ */	
+	Router::connect('/terms.html', array('controller' => 'pages', 'action' => 'display', 'terms'));
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
 /**

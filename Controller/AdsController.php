@@ -32,10 +32,12 @@ class AdsController extends AppController {
 			'containe' => array('Ad', 'User', 'Rubrik'),
 		);
 		
-		$last_ads = $this->paginate();
+		//$last_ads = $this->paginate();
+		//we($last_ads);
+		$categories = $this->Ad->getAdsCategories();
+		//we($categories);
+		$this->set(compact('last_ads', 'categories'));
 		
-		$this->set(compact('last_ads'));
-		//$this->set(compact('ads'));
 	}
 
 	/**

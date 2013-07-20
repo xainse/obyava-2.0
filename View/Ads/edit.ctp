@@ -1,29 +1,83 @@
-<div class="ad-edit-form">
-<h3>Додати об*яву</h3>
-<?php echo $this->Form->create('Ad');?>
-<?php echo $this->Form->input('region_id', array('label' => 'Регіон об*яви:', 'type'=>'select', 'empty' => '-Виберіть регіон-', 'options' => $regions));?>
-<?php echo $this->Form->input('category_id', array('label' => 'Виберіть рубрику:', 'type'=>'select', 'empty' => '-Виберіть рубрику-', 'options' => $categories));?>
-<?php echo $this->Form->input('text', array('label' => 'Текст об*яви:', ))?>
-<?php echo $this->Form->input('contacts', array('label' => 'Ваш адрес или телефон:', ))?>
-
-<?php echo $this->Form->input('confirm_rules', array('type'=>'checkbox', 'label' => $this->Html->link('Погоджуюсь з правилами публікації', 'terms.html'))); ?>
 
 
-<?php echo $this->Form->button('Зберегти', array('type'=>'submit'))?>
-<?php echo $this->Form->end();?>
-</div>
-
+<?php echo $this->element('ads/ad-edit-form');?>
 
 <style type="text/css">
-.ad-edit-form {
-	width: 600px;
-	height: 500px;
-	padding: 20px;
-	position: relative;
-	margin: 0 auto;
-	border: 2px solid #3B3830;
-	border-radius: 5px;
+<?php /*
+/	ADS EDIT FORM		/
+
+
+.ads-add fieldset{
+	width: 257px;
+	border: 1px solid #dedede;
+	font-size: .8em;
+	color: #777;
+	padding: 0 15px;
+}	
+input#AdTags{
+	font-size: 16px;
+	width: 253px;
+	margin: 10px 0; 	
 }
+
+input[type="submit"]{
+	padding: 3px 15px;	
+}	
+	*/?>
+/**		ERROR Mesages		*/
+ol.description{
+	margin-top: 1em;	
+	margin-left: 7px;
+	color: №444;
+	font-size: 0.8em;	
+}
+ol.description li{
+	margin-bottom: 1em;	
+}	
+.description span{
+	color: #777;
+	font-size: 0.9em;	
+}
+.description span a{
+	color: #999;
+	font-weight: bold;		
+}
+.description span a:hover{
+	text-decoration: none;
+}	
+h3.error{
+	margin: 0;
+	padding: 0;
+	height: 60px;	
+}
+.error-message {
+	border: 1px dashed red;
+	color: #FF2233;
+	font-size: 0.8em;
+	left: 350px;
+	padding: 5px;
+	position: absolute;
+	top: 300px;
+	width: 260px;
+}
+.text-error, .tags-error{
+	color: red;
+	font-size: .8em;
+}	
+.ads-add .text-error{
+	height: 200px;
+	margin-top: 35px;
+}
+.ads-add .tags-error{
+	
+}
+div.submit{
+	float: right;
+	margin-right: 10px;
+}
+input.error, select.error, textarea.error{
+	background-color: #fee;
+	border: 1px solid #faa;	
+}	
+
 </style>
-
-

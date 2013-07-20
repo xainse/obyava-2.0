@@ -95,11 +95,11 @@ class Ad extends AppModel {
 					$res[$key]['Ad']['short_text_len'] = strlen($res[$key]['Ad']['short_text']);
 				}
 				
-				switch ($i['Ad']['subrubrik_id']) {
+				/*switch ($i['Ad']['subrubrik_id']) {
 					case 'sell': $res[$key]['Rubrik']['title2'] = 'Продам '.$i['Rubrik']['name']; break;
 					case 'bay': $res[$key]['Rubrik']['title2'] = 'Куплю '.$i['Rubrik']['name']; break;
 					case 'chenge': $res[$key]['Rubrik']['title2'] = 'Обменяю '.$i['Rubrik']['name']; break; 
-				}
+				}*/
 			}
 		}
 		return $res;
