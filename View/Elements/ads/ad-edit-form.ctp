@@ -4,7 +4,7 @@
 <h3 class="black-bg-title">Додати об*яву</h3>
 <?php echo $this->Form->create('Ad');?>
 <?php echo $this->Form->input('region_id', array('label' => false, 'type'=>'select', 'empty' => '-Виберіть регіон-', 'options' => $regions));?>
-<?php echo $this->Form->input('category_id', array('label' => false, 'type'=>'select', 'empty' => '-Виберіть рубрику-', 'options' => $categories));?>
+<?php //echo $this->Form->input('category_id', array('label' => false, 'type'=>'select', 'empty' => '-Виберіть рубрику-', 'options' => $categories));?>
 <?php echo $this->Form->input('text', array('label' => 'Текст об*яви:', ))?>
 <?php echo $this->Form->input('contacts', array('label' => 'Ваша адреса або телефон:', ))?>
 

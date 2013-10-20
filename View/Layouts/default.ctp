@@ -9,24 +9,14 @@
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css(array('obyava-style', 'font-awesome'));
-		echo $this->Html->script(array('jquery.1.8.2.min', 'adsboard', 'obyava.ai'));
+		echo $this->Html->script(array('jquery.1.10.2.min', 'adsboard', 'win.manager', 'obyava.ai'));
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');		
 	?>
 <!--[if IE 7]><link type="text/css" rel="stylesheet" href="<?php echo $this->webroot?>css/font-awesome-ie7.css" /><![endif]-->
-<!--[if lt IE 9]>
-   <script>
-      document.createElement('header');
-      document.createElement('nav');
-      document.createElement('section');
-      document.createElement('article');
-      document.createElement('aside');
-      document.createElement('footer');
-      document.createElement('menu');
-   </script>
-<![endif]-->
+<?php echo $this->element('ieHTML5tags')?>
 
 </head>
 <body>
@@ -37,27 +27,26 @@
 			</a>
 			<?php echo $this->element('top-nav')?>
 		</header>
-		<div id="content_">
+		<div id="content_">		
 			<?php echo $this->Session->flash(); ?>
-
-			<?php echo $this->fetch('content'); ?>
+			<?php echo $this->fetch('content'); ?>			
 		</div>
-		<div id="footer">
+		
+		<div id="footer">		
 			<ul>
 				<li>Счетчики</li>
-				<li><?php echo $this->Html->link('Designed by Maximuz', '#maximus')?></li>
-				<li><?php echo $this->Html->link('Умови використання', '#terms-of-use')?></li>
+				<li><?php echo $this->Html->link('Designed by Maximuz', 'https://vk.com/id7475588', array('id'=>'maximus'))?></li>
+				<li><?php echo $this->Html->link('Умови використання', $this->webroot.'terms.html', array('id'=>'terms-of-use', 'target' => '_blank'))?></li>
 			</ul>
 		</div>
 	</div>
-	<?php //echo $this->element('sql_dump'); ?>
-	
 <!-- Scripts init -->
 <script type="text/javascript">
-$(function(){
-	Ad.setup();
+$(function(){ 
+	Ad.setup(); 
 });
 </script>
-	
+
+<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>

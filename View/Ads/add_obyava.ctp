@@ -5,7 +5,7 @@
 <?php  echo $this->Form->create('Ad');?>
 <legend><?php printf (__('Edit %s', true), __('Ad', true));?></legend>
 	<div style="
-				margin-left: 10% ;
+				/*margin-left: 10% ;
 				border-style: solid;
 				border-color: #000000;
 				border-width: 1px 1px 0px 1px;
@@ -17,7 +17,7 @@
 				border-top-right-radius: 15px;
 				float: center;
 				
-				text-decoration: none;
+				text-decoration: none; */
 				/*height: 25px;  Высота блока */
 				width: 150px; /* Ширина блока */
 				background: #fff; /* Цвет фона 

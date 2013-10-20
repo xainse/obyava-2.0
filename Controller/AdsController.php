@@ -46,16 +46,20 @@ class AdsController extends AppController {
 	 * Для яндекс.авто вимоги http://help.yandex.ru/webmaster/?id=1114015
 	 */
 	public function add() {
-		
+			
 		$this->renderEdit();
 	}
 	
-	
+	/**
+	 * Рисование формы редактирования объявления.
+	 * Странно почему на всех сайтах формы добавления объявлений такие большине, больше 10 полей?
+	 * @param string $action
+	 */
 	function renderEdit($action = 'gate_edit') {
 		
 		$regions 	= $this->Ad->Region->getAdsRegions();
 		$categories = $this->Ad->getAdsCategories();
-		
+		//we($categories);
 		$this->set(compact('categories', 'regions'));
 		$this->render('edit');
 	} 

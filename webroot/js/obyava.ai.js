@@ -24,6 +24,3 @@ var Ad = {
 /**
  * Window magager - show diferent popups
  */
-var winMan = {
-		
-};
