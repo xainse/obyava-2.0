@@ -70,5 +70,56 @@
 		height: 180px;
 		margin: 0 0 10px 0;	
 	}
-		
+ol.description{
+	margin-top: 1em;	
+	margin-left: 7px;
+	color: #444;
+	font-size: 12px;
+}
+ol.description li{
+	margin-bottom: 1em;	
+}	
+.description span{
+	color: #777;
+	font-size: 0.9em;	
+}
+.description span a{
+	color: #999;
+	font-weight: bold;		
+}
+.description span a:hover{
+	text-decoration: none;
+}	
+h3.error{
+	margin: 0;
+	padding: 0;
+	height: 60px;	
+}
+.error-message {
+	border: 1px dashed red;
+	color: #FF2233;
+	font-size: 0.8em;
+	left: 350px;
+	padding: 5px;
+	position: absolute;
+	top: 300px;
+	width: 260px;
+}
+.text-error, .tags-error{
+	color: red;
+	font-size: .8em;
+}	
+.ads-add .text-error{
+	height: 200px;
+	margin-top: 35px;
+}
+div.submit{
+	float: right;
+	margin-right: 10px;
+}
+input.error, select.error, textarea.error{
+	background-color: #fee;
+	border: 1px solid #faa;	
+}	
+
 </style>
