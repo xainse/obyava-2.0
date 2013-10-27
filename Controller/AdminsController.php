@@ -92,14 +92,15 @@ class AdminsController extends AppController {
 	
 	
 	public function login () {
+		
 		if ($this->Auth->login() && $this->isAuthorized()){
-		$this->redirect($this->Auth->loginRedirect);
+			$this->redirect($this->Auth->loginRedirect);
 		} elseif ($this->Auth->login() && !$this->isAuthorized()) {
-		$this->redirect(array('action'=>'noaccess'));
+			$this->redirect(array('action'=>'noaccess'));
 		} elseif (!empty($this->request->data)) {
-		$this->Session->setFlash($this->Auth->authError);
+			$this->Session->setFlash($this->Auth->authError);
 		}
-		$this->render('login', 'ajax');
+			$this->render('login', 'ajax');
 		}
 	public function isAuthorized() {
 		
