@@ -1,0 +1,46 @@
+/*	RESPONSIVE DESIGN SYKA	*/
+@media (max-width: 1000px) {
+	.index-das-wrap {width: 980px; }
+}
+
+@media (max-width: 1920px) {
+	.index-das-wrap {width: 1757px; }	/* одна маленька об*ява в ширину 251рх */
+}
+@media (max-width: 1600px) {
+	.index-das-wrap {width: 1004px; }
+}
+@media (max-width: 1440px) {
+	.index-das-wrap {width: 1004px; }
+}
+@media (max-width: 1336px) {
+	.index-das-wrap {width: 1004px; }
+}
+@media (max-width: 1024px) {
+	.index-das-wrap {width: 753px; }
+}
+@media (max-width: 800px) {
+	.index-das-wrap {width: 502px; }
+}
+@media (max-width: 480px) {
+	.index-das-wrap {width: 251px; }
+}
+/*
+@media (min-width: 1020px) {
+	.right-menu {display: none;} /* TODO: коли розмір монітора зменшується, то меню з підприємствами треба кудись винести */
+}
+*/
+
+/*
+@media (min-width: 768px) and (max-width: 979px) {
+	
+}
+@media (max-width: 480px) {
+
+}
+@media (max-width: 767px) {
+
+}
+@media (min-width: 1200px) {
+	
+}
+*/

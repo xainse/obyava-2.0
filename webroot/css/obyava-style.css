@@ -201,7 +201,8 @@ a:hover {
 	width: 100%;
 	height: 62px;
 }
-/* Панель меню на главной странице с фильтрами объявлений по категориям */
+
+/* ПАНЕЛЬ МЕНЮ НА ГЛАВНОЙ СТРАНИЦЕ С ФИЛЬРАМИ ОБЪЯВЛЕНИЙ ПО КАТЕГОРИЯМ */
 .menu-filter-wrap {
 	display: block;
 	position: relative;
@@ -426,49 +427,45 @@ a:hover {
 }
 
 
-/*	RESPONSIVE DESIGN SYKA	*/
-@media (max-width: 1000px) {
-	.index-das-wrap {width: 980px; }
-}
-
-@media (max-width: 1920px) {
-	.index-das-wrap {width: 1757px; }	/* одна маленька об*ява в ширину 251рх */
-}
-@media (max-width: 1600px) {
-	.index-das-wrap {width: 1004px; }
-}
-@media (max-width: 1440px) {
-	.index-das-wrap {width: 1004px; }
-}
-@media (max-width: 1336px) {
-	.index-das-wrap {width: 1004px; }
-}
-@media (max-width: 1024px) {
-	.index-das-wrap {width: 753px; }
-}
-@media (max-width: 800px) {
-	.index-das-wrap {width: 502px; }
-}
-@media (max-width: 480px) {
-	.index-das-wrap {width: 251px; }
-}
-/*
-@media (min-width: 1020px) {
-	.right-menu {display: none;} /* TODO: коли розмір монітора зменшується, то меню з підприємствами треба кудись винести */
-}
-*/
-
-/*
-@media (min-width: 768px) and (max-width: 979px) {
+/* EDIT ADS WINDOW, SELECT CATEGORY */
+.b_category-block {
+	position: relative;	
+	width: 620px;
+	min-height: 300px;
+	padding: 26px;
 	
-}
-@media (max-width: 480px) {
-
-}
-@media (max-width: 767px) {
-
-}
-@media (min-width: 1200px) {
+	background: #FFF;
+	border: 1px solid #dce0e6;
+	border-radius: 4px; 
+	display: table;
+}	
+	.b_category-block .li, .b_category-block .popup-title, .b_category-block .cat_title {padding:0; margin: 0; list-style: none;}
+	.b_category-block .cat_title {float: left; width: 100%; height: auto; background: transparent; border: 0; font-weight: bold;}
 	
-}
-*/
+	.b_category-block .li {
+		float: left;
+		width: 130px;
+		height: 45px;
+		padding: 0 10px 0 13px;
+		background-color: #fbfbfb;		
+		margin: 0 2px 2px 0;		
+		display: inline-table;
+		border-radius: 2px;
+		color: #3B3830;
+	}
+	.b_category-block .li:hover {
+		background-color: #3B3830;
+		color: #FFF;
+	}
+		.b_category-block .li label {
+			vertical-align: middle;
+			height: 100%;
+			display: table-cell;
+			padding: 0 0 0 5px;
+			line-height: 11px;
+			font-size: 12px;
+			cursor: pointer;			
+		}
+		.b_category-block .li input {
+			margin: 15px 0 0;
+		}

@@ -2,9 +2,11 @@
 <div class="ad-edit-form">
 <div class="left">
 <h3 class="black-bg-title">Додати об*яву</h3>
-<?php echo $this->Form->create('Ad');?>
-<?php echo $this->Form->input('region_id', array('label' => false, 'type'=>'select', 'empty' => '-Виберіть регіон-', 'options' => $regions));?>
-<?php //echo $this->Form->input('category_id', array('label' => false, 'type'=>'select', 'empty' => '-Виберіть рубрику-', 'options' => $categories));?>
+<?php echo $this->Form->create('Ad', array('id' => 'addObyForm'));?>
+<?php echo $this->Form->input('region_id', array('label' => false, 'type'=>'select', 'class'=>'input select', 'empty' => '-Виберіть регіон-', 'options' => $regions));?>
+<?php // echo $this->Form->input('category_id', array('label' => false, 'type'=>'select', 'empty' => '-Виберіть рубрику-', 'options' => $categories));?>
+<div class="input category-placeholder" id="category-placeholder">-<?php echo __('Виберіть категорію')?>-</div>
+<?php echo $this->Form->hidden('category_id');?>
 <?php echo $this->Form->input('text', array('label' => 'Текст об*яви:', ))?>
 <?php echo $this->Form->input('contacts', array('label' => 'Ваша адреса або телефон:', ))?>
 
@@ -36,6 +38,7 @@
 
 
 <style type="text/css">
+/* ADD/EDIT ADS FORM */
 .ad-edit-form {
 	width: 600px;
 	height: 500px;
@@ -65,7 +68,9 @@
 	.ad-edit-form .input.checkbox label {width: 240px;}
 	.ad-edit-form .input select, .ad-edit-form .input input[type=text] { float: left; width: 295px; padding: 4px 3px;}
 	textarea#AdText{
-		font-size: 16px;
+		font-size: 14px;
+		font-family: 'MS Shell Dlg';
+		font-weight: normal;
 		width: 290px;
 		height: 180px;
 		margin: 0 0 10px 0;	
@@ -121,5 +126,20 @@ input.error, select.error, textarea.error{
 	background-color: #fee;
 	border: 1px solid #faa;	
 }	
+.ad-edit-form .select select, .ad-edit-form .input input, .ad-edit-form .category-placeholder {
+	border: 1px solid #e3e9ef;
+	border-color: #abadb3 #e3e9ef #e3e9ef;
+	border-radius: 2px;
+}
+	.ad-edit-form .category-placeholder {
+		float: left;
+		width: 279px;
+		background-color: #FFF;
+		color: #000;
+		padding: 2px 7px;
+		font-size: 14px;
+		font-family: 'MS Shell Dlg';		
+	}
+	
 
 </style>

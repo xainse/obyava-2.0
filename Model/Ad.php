@@ -133,14 +133,14 @@ class Ad extends AppModel {
 		$this->Tag = ClassRegistry::init('Tag');
 		// 33 - это тег, который называется "Категорії об*яв" - и он должен содержать в себе иерархию категорий 
 		$tmp_categories = $this->Tag->getTagsHierarchy(self::MAIN_CATEGORY_TAG, 1);
-	
+	//wln($tmp_categories);
 		$categories = $options = array();		
 		foreach ($tmp_categories['TagConnection'] as $category1) {
 
 			if (!empty($category1['TagConnection'])) {
-				$categories[$category1['Tag']['name']] = array(
+				/*$categories[$category1['Tag']['name']] = array(
 					$category1['Tag']['id']	=> $category1['Tag']['name']
-				);
+				);*/
 				
 				foreach ($category1['TagConnection'] as $category2) {
 					
