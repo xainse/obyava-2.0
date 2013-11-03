@@ -106,6 +106,7 @@ class AdsController extends AppController {
 		$this->render('gate_edit');
 		
 	}
+	
 	//додавання оголошень "користувачем"
 	public function add_obyava() {
 		if (!empty($this->data)){

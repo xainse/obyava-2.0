@@ -1,6 +1,8 @@
 /** 
  * @author @xainse
  * Скрипт для управления попапами и другими эффектами
+ * 
+ * Класс генерит собственные события
  */
 var winManager = {
 	
@@ -15,16 +17,23 @@ var winManager = {
 	helpInputText: 	'',
 	canShowLog:	false,	// on live server must set to FALSE
 	
-	popup_loader_id: 		'#popup_loader',
+	popup_loader_id: 	'#popup_loader',
+	
+	popup_wrapper_id: 	'#popupBox',
+	
+	popup_content_id: 	'#popup-content',
+	
+	innerLoaderID: 		'#inner-box-loader',
+
 	freezen_background_id:	'#freezen_background',
-	html_freez_bg: '<div class="bg-freeze-window" id="freezen_background" style="position:fixed; width:100%; height:100%; top:0; left:0; background-color:#000; z-index:1000; opacity:0.6;"></div>',
-	html_load_popup: '<div class="popup_loader" id="popup_loader"></div>',
 	
-	html_popup_wrapper: '<div class="popup-container" id="popupBox" style="position:fixed; top:200px; left:45%; display:none;"><a class="popup-close-btn" href="#!/close-btn" onclick="winManager.unfreezePage(); return false;"></a><div id="popup-content"></div></div>',
+	html_freez_bg: 			'<div class="bg-freeze-window" id="freezen_background" style="position:fixed; width:100%; height:100%; top:0; left:0; background-color:#000; z-index:1000; opacity:0.6;"></div>',
 	
-	popup_wrapper_id: '#popupBox',
+	html_load_popup: 		'<div class="popup_loader" id="popup_loader"></div>',
+	
+	html_popup_wrapper: 	'<div class="popup-container" id="popupBox" style="position:fixed; top:200px; left:45%; display:none; z-index:1001;"><a class="popup-close-btn" href="#!/close-btn" onclick="winManager.unfreezePage(); return false;">&times;</a><div id="popup-content"></div></div>',
+	
 	html_inner_loader: '',
-	innerLoaderID: '#inner-box-loader',
 	
 	w_width: 0,
 	w_height: 0,
@@ -33,9 +42,15 @@ var winManager = {
 		
 	},
 	
+	/**
+	 * Убрать блокировку экрана
+	 */
 	unfreezePage: function (){
-		$(winManager.popup_wrapper_id).hide();
+		$(winManager.popup_wrapper_id).hide();		// прячем окно попапа
+		$(winManager.popup_content_id).html('');	// очищаем контент попапа
 		$(winManager.openedPopups.join(", ")).hide();
+		
+		$(document).trigger('winManagerClosePopup');
 	},
 	
 	/**
@@ -62,6 +77,20 @@ var winManager = {
 	 * @returns
 	 */
 	showPopup: function(popupContentLink, callback) {		
+		
+		callback = (callback)?callback:function(){console.log('Empty callback');};
+				
+		
+		$.get(popupContentLink, function(resp){
+			winManager.showContentInPopup(resp, callback());
+		});
+	},
+	
+	/**
+	 * Показать переданый контент в попапе
+	 */
+	showContentInPopup: function(content, callback) {
+		
 		this.freezePage();
 		
 		callback = (callback)?callback:function(){console.log('Empty callback');};
@@ -70,14 +99,39 @@ var winManager = {
 			$("body").append(winManager.html_popup_wrapper);
 		}
 		
-		$.get(popupContentLink, function(resp){
-			$("#popup-content").html(resp);
-			var pos_lft = (winManager.w_width - $(winManager.popup_wrapper_id).width())/2;
-			var pos_top = ($(window).height() - $(winManager.popup_wrapper_id).height())/2;
-			
-			$(winManager.popup_wrapper_id).css({top:pos_top, left: pos_lft, position:'fixed'}).show();
-			callback();
-		});
+		$(winManager.popup_wrapper_id).html(content);
+		
+		var pos_lft = (winManager.w_width - $(winManager.popup_wrapper_id).width())/2;
+		var pos_top = ($(window).height() - $(winManager.popup_wrapper_id).height())/2;
+		
+		$(winManager.popup_wrapper_id).css({top:pos_top, left: pos_lft, position:'fixed'}).show();
+		
+		callback();
+		
+	},
+	
+	/**
+	 * Показать блок контента, как попап
+	 * @param BlockId
+	 */
+	showPopupById: function(BlockId, callback) {
+		this.freezePage();
+		console.log(BlockId);
+		callback = (callback)?callback:function(){console.log('Empty callback');};
+		
+		if (!$(this.popup_wrapper_id).length) {
+			$("body").append(winManager.html_popup_wrapper);
+		}
+		
+		$($(BlockId).html()).appendTo(winManager.popup_content_id);
+		
+		var pos_lft = (winManager.w_width - $(winManager.popup_wrapper_id).width())/2;
+		var pos_top = ($(window).height() - $(winManager.popup_wrapper_id).height())/2;
+		
+		$(winManager.popup_wrapper_id).css({top:pos_top, left: pos_lft, position:'fixed'}).show();
+		
+		callback();
+		//$(winManager.popup_content_id).html();
 	},
 	
 	// Show popup with text 'Loadding...'
@@ -133,3 +187,10 @@ var winManager = {
 		head.appendChild(script);
 	}
 };
+
+window.we = function (variable) {	
+	alert(variable);
+}
+window.wln = function(variable){
+	console.log(variable);
+}

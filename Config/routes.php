@@ -32,7 +32,14 @@
  */	
 	Router::connect('/terms.html', array('controller' => 'pages', 'action' => 'display', 'terms'));
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
-
+	
+	
+/**
+ *  Технические старинцы
+ */	
+	Router::connect('/500.html', array('controller' => 'pages', 'action' => 'display', '500'));
+	Router::connect('/404.html', array('controller' => 'pages', 'action' => 'display', '404'));
+	
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
  * how to customize the loading of plugin routes.
