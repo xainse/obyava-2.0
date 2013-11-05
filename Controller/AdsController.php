@@ -127,6 +127,7 @@ class AdsController extends AppController {
 	
 	/**
 	 * 
+	 * 
 	 * Редагування оголошень
 	 * @param unknown_type $id
 	 */

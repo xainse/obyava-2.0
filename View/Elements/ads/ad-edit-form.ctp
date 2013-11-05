@@ -12,7 +12,7 @@
 
 <?php echo $this->Form->input('confirm_rules', array('type'=>'checkbox', 'order' => '', 'label' => $this->Html->link('Погоджуюсь з правилами публікації', $this->webroot.'terms.html'))); ?>
 
-<?php echo $this->Form->button('Зберегти', array('type'=>'submit'))?>
+<?php echo $this->Form->button('Зберегти', array('type'=>'submit', 'class' =>'btn-save'))?>
 <?php echo $this->Form->end();?>
 </div>
 	<div class="right ads-add">
