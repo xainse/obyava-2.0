@@ -110,7 +110,11 @@ class AdminsController extends AppController {
 	
 	public function logout () {
 		$this->Auth->logout();
-		//$this->Session->delete('Admin');
+		$this->redirect(array('action'=>'login'));
+	}
+
+	public function gate_logout () {
+		$this->Auth->logout();
 		$this->redirect(array('action'=>'login'));
 	}
 	

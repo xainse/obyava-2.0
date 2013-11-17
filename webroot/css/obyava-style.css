@@ -466,7 +466,7 @@ a:hover {
 	width: 100%;
 	margin:0 0 7px;	
 }
-	.ad-edit-form .input label { float: left; width: 200px; font-size: 13px;}
+	.ad-edit-form .input label { float: left; width: 200px; }
 	.ad-edit-form .input.checkbox label {width: 240px;}
 	.ad-edit-form .input select, .ad-edit-form .input input[type=text] { float: left; width: 295px; padding: 4px 3px;}
 	textarea#AdText{

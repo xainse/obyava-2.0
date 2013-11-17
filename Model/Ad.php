@@ -134,8 +134,11 @@ class Ad extends AppModel {
 	   1. Провалидировать
 	   2 . 
 	 */
-	/* public function save() {
+	public function save($data = null, $validate = true, $fieldList = array()) {
+
+		if (parrent::save($data, $validate, $fieldList)) {
 
 
-	} */
+		}
+	}
 }

@@ -83,6 +83,8 @@ class AppController extends Controller {
 		$this->setAdsCount();
 		
 		$this->set('Auth',$this->Auth->user());
+
+		//we($this->Auth->user());
 		
 		if (!empty($this->params['prefix']) && $this->params['prefix'] == 'gate') {
 			if (!$this->Auth->user('id')) {

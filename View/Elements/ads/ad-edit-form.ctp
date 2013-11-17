@@ -10,14 +10,20 @@
 <?php echo $this->Form->input('text', array('label' => 'Текст об*яви:', ))?>
 <?php echo $this->Form->input('contacts', array('label' => 'Ваша адреса або телефон:', ))?>
 
-<?php echo $this->Form->input('confirm_rules', array('type'=>'checkbox', 'order' => '', 'label' => $this->Html->link('Погоджуюсь з правилами публікації', $this->webroot.'terms.html'))); ?>
+<?php if (!empty($Auth['email'])):?>
+<?php echo $this->Form->hidden('userEmail', array('value' => $Auth['email']));?>
+<?php else: ?>
+<?php echo $this->Form->input('userEmail', array('label' => __('Введіть ваш @email') . ' <i class="icon-exclamation-sign"></i>:'), array('escape' => false))?>
+<?php endif; ?>	
+
+<?php echo $this->Form->input('confirm_rules', array('type'=>'checkbox', 'order' => '', 'label' => $this->Html->link('Погоджуюсь з правилами публікації', $this->webroot.'terms.html')));?>
 
 <?php echo $this->Form->button('Зберегти', array('type'=>'submit', 'class' =>'btn-save'))?>
 <?php echo $this->Form->end();?>
 </div>
 	<div class="right ads-add">
 	<?php if(empty($is_error)) :?>
-		<h3>Як правильно написати об&rsquo;яву?</h3>
+		<h3><?php echo __('Як правильно написати об&rsquo;яву')?>?</h3>
 		<ol class="description">
 			<li>Виберіть рубрику, в яку ви хочите одати свою об&rsquo;яву. <span>(Ви можете, <a href="rubrik/add/">додати нову рубрику</a>, якщо намає потрібної.)</span></li>
 			<li>Уточніть підрубрику. <span>(Що ви хочете, продати, купити чи інше.)</span></li>
