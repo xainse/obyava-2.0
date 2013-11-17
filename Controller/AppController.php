@@ -49,6 +49,9 @@ class AppController extends Controller {
 	
 	public static $cronLogType = 'cron';
 	
+	/**
+	 * Компоненты CakePHP которые подключены к проекту
+	 */
 	public $components = array(
 			'Auth' => array(
 				'loginAction' => array(
@@ -69,9 +72,13 @@ class AppController extends Controller {
 				'Session'
 		);
 	
-	
+	/**
+	 * Функция выполняется до того как проверяються права на доступ
+	 */
 	public function beforeFilter(){
 		parent::beforeFilter();
+
+		//we(Configure::version());
 
 		$this->setAdsCount();
 		

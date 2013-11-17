@@ -143,6 +143,20 @@ a:hover {
 	margin: 21px auto 0;
 }
 
+
+/* FLASH MESSAGE */
+.message {
+	position: absolute;
+	padding: 3px 4px 4px;
+	width: auto;
+	max-width: 25%;
+	top: 1px;
+	right: 1p;
+	background-color: #3B3830;
+	color: #FFF;
+}
+
+
 /* top bar with search   */
 .b_top_search {
 	float: left;

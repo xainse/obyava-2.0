@@ -49,10 +49,10 @@ class AdsController extends AppController {
 		if (!empty($this->data)){
 			$this->Ad->create();
 			if ($this->Ad->save($this->data)) {
-				$this->Session->setFlash(__('The record has been saved', true));
+				$this->Session->setFlash(__('Оголошення збереженне', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-				//we($this->Admin);
+				//we($this->Ad);
 				$this->Session->setFlash(__('The record could not be saved. Please, try again.', true));
 			}
 		}

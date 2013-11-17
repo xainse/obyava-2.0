@@ -16,48 +16,15 @@ class Ad extends AppModel {
 	const MAIN_CATEGORY_TAG = 33;
 				
 	
-	public  $validate = array(
-			
-			'text' => array(
-					'rule' => array('custom', "/^[a-z0-9.-_!]{3,500}$/i") ,
-					'allowEmpty' => false,
-					'message'    => 'Текст обяви може містити букви та цифри a-z,0-9, "-","!",
-                                     "_" & "." та повинен містити від 20 до 500 символів',
-			),
-    		/*'text' => array(
-    			'rule' => array('custom', "/^[a-z0-9.-_!]{3,500}$/i") ,
-                	'allowEmpty' => false,
-                	'message'    => 'Текст обяви може містити букви та цифри a-z,0-9, "-","!", 
-                                     "_" & "." та повинен містити від 20 до 500 символів',
-            ),
-		 	'title' => array(
-				
-                	'numeric' => array(
-                	'rule' => 'alphaNumeric' ,
-					'message' => 'букви та цифри'),
-					'maxmin' => array(
-            		'rule' => array('between', 5, 60),
-                	'message'    => 'заголовок може містити букви та цифри і повинен мати від 3 до 60 символів',
-            ),
-            ),*/
-       'tags' => array(
-	        'alphad' => array(	            
-				'rule' => array('custom', "/^[а-я ]{2,18}$/i") ,
+	/**
+	 * Правила валидации моделей
+	 */
+	public  $validate = array(			
+		'text' => array(
+				'rule' 		 => array('notempty'),
 				'allowEmpty' => false,
-	        	'message' => 'только буквы и цифры.' ,
-	            
-	         ),
-	        'minlength' => array(
-	            'rule' => array('minLength', '5'),  
-	            'message' => 'Минимальная длина - 5 символов.'
-	        ),  
-	    ),    	
-		 	'date' => array(
-				'rule' => array('date','dmy'),
-				'massage' => 'dd-mm-YY',
-				'allowEmpty' => false,
-            	'message' => 'введите дату, формата д(01)-м(06)-р(13)'
-			) /**/
+				'message'    => 'Напишіть текст оголошення',
+		),    		
   	);
 	
 	public $belongsTo = array(
@@ -91,7 +58,7 @@ class Ad extends AppModel {
 	 * Обработка после нахождения объявлений в базе
 	 * @see Model::afterFind()
 	 */
-	public function afterFind($res, $primery) {
+	public function afterFind($res, $primary = false) {
 	
 		if (!empty($res[0]['Ad'])) {
 			foreach ($res as $key => $i) {
@@ -160,4 +127,15 @@ class Ad extends AppModel {
 		
 		return $categories;
 	}
+
+	/*
+	 * Переопределяю функцию сохранения модели
+	   Что нужно сделать при сохранении:
+	   1. Провалидировать
+	   2 . 
+	 */
+	/* public function save() {
+
+
+	} */
 }
