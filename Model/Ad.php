@@ -16,7 +16,14 @@ class Ad extends AppModel {
 	const MAIN_CATEGORY_TAG = 33;
 				
 	
-	public  $validate = array(		    
+	public  $validate = array(
+			
+			'text' => array(
+					'rule' => array('custom', "/^[a-z0-9.-_!]{3,500}$/i") ,
+					'allowEmpty' => false,
+					'message'    => 'Текст обяви може містити букви та цифри a-z,0-9, "-","!",
+                                     "_" & "." та повинен містити від 20 до 500 символів',
+			),
     		/*'text' => array(
     			'rule' => array('custom', "/^[a-z0-9.-_!]{3,500}$/i") ,
                 	'allowEmpty' => false,

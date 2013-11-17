@@ -42,11 +42,21 @@ class AdsController extends AppController {
 
 	/**
 	 * Додавання оголошення на сайті користувачами
-	 * Для яндекса треба багато данних http://help.yandex.ru/webmaster/?id=1113400
-	 * Для яндекс.авто вимоги http://help.yandex.ru/webmaster/?id=1114015
+	 * 
+	 * 
 	 */
 	public function add() {
-			
+		if (!empty($this->data)){
+			$this->Ad->create();
+			if ($this->Ad->save($this->data)) {
+				$this->Session->setFlash(__('The record has been saved', true));
+				$this->redirect(array('action'=>'index'));
+			} else {
+				//we($this->Admin);
+				$this->Session->setFlash(__('The record could not be saved. Please, try again.', true));
+			}
+		}
+		
 		$this->renderEdit();
 	}
 	
